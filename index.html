@@ -7,14 +7,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23b85c2c'/><text y='48' x='7' font-size='48'>📚</text></svg>">
 <style>
 :root,[data-theme="light"]{
   --bg:#faf7f2;--surface:#fffcf7;--surface2:#fff;
   --border:#e6dfd4;--text:#2a2218;--muted:#7a7168;--faint:#c2baad;
   --accent:#b85c2c;--accent-h:#8f4320;--accent-soft:#f5ede6;
   --green:#2a6e4f;--green-soft:#e5f0eb;
-  --shadow:0 4px 20px rgba(60,40,20,0.09);
-  --r:18px;
+  --shadow:0 4px 20px rgba(60,40,20,0.09);--r:18px;
 }
 [data-theme="dark"]{
   --bg:#1a1610;--surface:#211e18;--surface2:#2a261e;
@@ -28,68 +28,71 @@ html{scroll-behavior:smooth;}
 body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;}
 a{color:inherit;text-decoration:none;}
 img{display:block;max-width:100%;}
-
-/* HEADER */
-.header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
-.logo{display:flex;align-items:center;gap:10px;font-family:'Lora',serif;font-size:22px;font-weight:600;}
+.header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Lora',serif;font-size:21px;font-weight:600;}
 .logo svg{flex-shrink:0;}
-.toggle-btn{background:none;border:1px solid var(--border);border-radius:10px;padding:8px 10px;cursor:pointer;display:flex;align-items:center;color:var(--muted);}
+.toggle-btn{background:none;border:1px solid var(--border);border-radius:10px;padding:8px 10px;cursor:pointer;display:flex;align-items:center;color:var(--muted);transition:all .18s;}
 .toggle-btn:hover{background:var(--accent-soft);color:var(--accent);}
-
-/* HERO */
-.hero{background:linear-gradient(135deg,var(--accent-soft) 0%,var(--surface) 60%);border-bottom:1px solid var(--border);padding:36px 20px 32px;}
+.hero{background:linear-gradient(135deg,var(--accent-soft) 0%,var(--surface) 60%);border-bottom:1px solid var(--border);padding:36px 20px 28px;}
 .hero-inner{max-width:900px;margin:0 auto;}
-.hero h1{font-family:'Lora',serif;font-size:clamp(28px,5vw,44px);line-height:1.15;margin-bottom:10px;}
+.hero h1{font-family:'Lora',serif;font-size:clamp(26px,5vw,42px);line-height:1.15;margin-bottom:10px;}
 .hero h1 em{font-style:normal;color:var(--accent);}
-.hero p{color:var(--muted);font-size:17px;line-height:1.6;max-width:660px;margin-bottom:24px;}
-.search-box{display:flex;gap:10px;flex-wrap:wrap;}
-.search-box input{flex:1 1 300px;padding:14px 18px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;font-family:'Nunito',sans-serif;background:var(--surface2);color:var(--text);outline:none;transition:border-color .2s;}
-.search-box input:focus{border-color:var(--accent);}
-.search-box input::placeholder{color:var(--faint);}
-.stats{margin-top:14px;font-size:14px;color:var(--muted);}
+.hero p{color:var(--muted);font-size:16px;line-height:1.6;max-width:660px;margin-bottom:22px;}
+.search-wrap{display:flex;gap:8px;max-width:620px;}
+.search-wrap input{flex:1;padding:13px 18px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;font-family:'Nunito',sans-serif;background:var(--surface2);color:var(--text);outline:none;transition:border-color .2s;}
+.search-wrap input:focus{border-color:var(--accent);}
+.search-wrap input::placeholder{color:var(--faint);}
+.search-btn{padding:13px 20px;border-radius:12px;background:var(--accent);border:none;color:#fff;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;display:flex;align-items:center;gap:7px;transition:background .18s;white-space:nowrap;}
+.search-btn:hover{background:var(--accent-h);}
+.stats{margin-top:12px;font-size:14px;color:var(--muted);}
 .stats strong{color:var(--accent);}
-
-/* FILTERS */
-.filters{max-width:1140px;margin:24px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap;}
+.filters{max-width:1140px;margin:22px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap;}
 .filter-btn{padding:7px 14px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);font-size:13px;font-weight:700;cursor:pointer;color:var(--muted);transition:all .18s;}
 .filter-btn.active,.filter-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
-
-/* GRID */
 .grid{max-width:1140px;margin:20px auto 60px;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
 .no-results{grid-column:1/-1;text-align:center;padding:48px;color:var(--muted);font-size:18px;}
-.no-results strong{display:block;font-size:28px;margin-bottom:8px;color:var(--faint);}
-
-/* CARD */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s;}
+.no-results strong{display:block;font-size:36px;margin-bottom:8px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:11px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s;}
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(60,40,20,0.13);}
 .card-author{font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);}
-.card-title{font-family:'Lora',serif;font-size:20px;line-height:1.25;color:var(--text);}
+.card-title{font-family:'Lora',serif;font-size:19px;line-height:1.25;color:var(--text);}
 .card-desc{font-size:14px;color:var(--muted);line-height:1.5;}
 .card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
 .tag{padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:700;}
 .tag.genre{background:var(--green-soft);color:var(--green);}
-.card-actions{display:flex;gap:8px;flex-wrap:wrap;padding-top:4px;}
+.card-actions{display:flex;gap:8px;flex-wrap:wrap;padding-top:2px;}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:10px;font-size:13px;font-weight:700;border:1.5px solid var(--border);color:var(--text);background:var(--surface2);cursor:pointer;transition:all .18s;white-space:nowrap;}
 .btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
 .btn.primary:hover{background:var(--accent-h);border-color:var(--accent-h);}
 .btn.video{background:var(--green-soft);border-color:var(--green);color:var(--green);}
 .btn.video:hover{background:var(--green);color:#fff;}
-.no-action{font-size:13px;color:var(--faint);font-style:italic;}
-
-/* FOOTER */
 footer{text-align:center;padding:24px;color:var(--faint);font-size:13px;border-top:1px solid var(--border);}
+@media(max-width:600px){
+  .hero{padding:24px 16px 20px;}
+  .grid{padding:0 12px;}
+  .filters{padding:0 12px;}
+  .search-wrap{flex-direction:column;}
+  .search-btn{justify-content:center;}
+}
 </style>
 </head>
 <body>
-
 <header class="header">
   <div class="logo">
-    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Логотип">
-      <rect width="30" height="30" rx="8" fill="#b85c2c"/>
-      <path d="M7 22V9C7 8.448 7.448 8 8 8h6.5c1.5 0 3.5.8 3.5 3s-2 3-3.5 3H8" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
-      <circle cx="22" cy="20" r="4" fill="#fff" fill-opacity=".25"/>
-      <path d="M20 20l1.5 1.5L24 18" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg width="32" height="32" viewBox="0 0 64 64" aria-label="Логотип книги">
+      <rect width="64" height="64" rx="14" fill="#b85c2c"/>
+      <rect x="10" y="14" width="26" height="36" rx="3" fill="#fff" fill-opacity=".95"/>
+      <rect x="12" y="16" width="22" height="2.5" rx="1" fill="#b85c2c" fill-opacity=".4"/>
+      <rect x="12" y="21" width="22" height="2" rx="1" fill="#b85c2c" fill-opacity=".25"/>
+      <rect x="12" y="25" width="16" height="2" rx="1" fill="#b85c2c" fill-opacity=".25"/>
+      <rect x="36" y="14" width="18" height="36" rx="3" fill="#8f4320"/>
+      <path d="M45 26 l3 4 l3-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M45 23 l6 0" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+      <path d="M45 34 l6 0M45 38 l4 0" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+      <path d="M36 14 Q34 32 36 50" stroke="#2a1a0a" stroke-width="1" fill="none" opacity=".15"/>
+      <circle cx="50" cy="46" r="9" fill="#e8d07a"/>
+      <path d="M50 42v4l2.5 2.5" stroke="#8f4320" stroke-width="2" stroke-linecap="round"/>
     </svg>
     Летнее чтение
   </div>
@@ -101,9 +104,13 @@ footer{text-align:center;padding:24px;color:var(--faint);font-size:13px;border-t
 <section class="hero">
   <div class="hero-inner">
     <h1>Список литературы —<br>переход в <em>4 класс</em></h1>
-    <p>Найди нужное произведение, читай прямо здесь или перейди на страницу для чтения. Если к книге есть мультфильм — он тоже здесь.</p>
-    <div class="search-box">
-      <input id="search" type="search" placeholder="🔍  Введи название или автора…" autocomplete="off"/>
+    <p>Найди нужное произведение, читай бесплатно онлайн или смотри мультфильм. Без регистрации и подписок.</p>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="Введи название или автора…" autocomplete="off"/>
+      <button class="search-btn" id="searchBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Найти
+      </button>
     </div>
     <p class="stats" id="stats"></p>
   </div>
@@ -111,71 +118,71 @@ footer{text-align:center;padding:24px;color:var(--faint);font-size:13px;border-t
 
 <div class="filters" id="filters"></div>
 <div class="grid" id="grid"></div>
-
-<footer>Сайт создан для родителей 4 класса. Все тексты и ссылки ведут на открытые бесплатные ресурсы.</footer>
+<footer>Сайт для родителей 4 класса · Все ссылки — бесплатные ресурсы без подписки и регистрации</footer>
 
 <script>
 (function(){
   const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
   let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
   r.setAttribute('data-theme',d);
+  const moonSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  const sunSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
   t&&t.addEventListener('click',()=>{
     d=d==='dark'?'light':'dark';
     r.setAttribute('data-theme',d);
-    t.innerHTML=d==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    t.innerHTML=d==='dark'?sunSVG:moonSVG;
   });
 })();
 
 const books=[
-  {author:'А. С. Пушкин',title:'Сказка о мёртвой царевне и семи богатырях',genre:'Сказка',desc:'Добро против зла: молодая царевна, семь богатырей и злая мачеха с волшебным зеркалом.',read:null,readLabel:null,video:'https://rutube.ru/video/71bb14175374cda5b76401b6a47ee19a/',tags:['классика']},
-  {author:'А. С. Пушкин',title:'Руслан и Людмила',genre:'Поэма',desc:'Волшебная поэма о рыцаре Руслане, который отправляется спасать свою невесту Людмилу.',read:'https://ilibrary.ru/text/472/p.1/index.html',readLabel:'Читать на ilibrary.ru',video:null,tags:['классика']},
-  {author:'М. Ю. Лермонтов',title:'Ашик-Кериб',genre:'Сказка',desc:'Восточная сказка о бедном ашуге, его любви к богатой красавице и дороге домой через годы странствий.',read:'https://karunika.ru/skazka-lermontova/ashik-kerib',readLabel:'Читать на karunika.ru',video:null,tags:['классика']},
-  {author:'П. П. Ершов',title:'Конёк-Горбунок',genre:'Сказка-поэма',desc:'Иванушка и его верный конёк-горбунок против капризного царя: добро, смекалка и волшебство.',read:'https://ilibrary.ru/text/1033/p.1/index.html',readLabel:'Читать на ilibrary.ru',video:'https://rutube.ru/video/1c5122fede827c30aab2ba036a052c05/',tags:['классика']},
-  {author:'И. А. Крылов',title:'Волк и журавль',genre:'Басня',desc:'Короткая и острая: жадный волк, добрый журавль и урок о неблагодарности.',read:'https://basnivisni.ru/wolf-and-the-crane.html',readLabel:'Читать на basnivisni.ru',video:null,tags:['классика','юмор']},
-  {author:'И. А. Крылов',title:'Квартет',genre:'Басня',desc:'Четыре горе-музыканта никак не могут сыграть вместе — в чём же дело?',read:'https://basnivisni.ru/quartet.html',readLabel:'Читать на basnivisni.ru',video:null,tags:['классика','юмор']},
-  {author:'В. Ф. Одоевский',title:'Городок в табакерке',genre:'Сказка',desc:'Мальчик Миша засыпает и попадает внутрь музыкальной табакерки, где живут колокольчики и молоточки.',read:'https://nukadeti.ru/skazki/gorodok_v_tabakerke',readLabel:'Читать на nukadeti.ru',video:null,tags:['классика']},
-  {author:'А. П. Чехов',title:'Мальчики',genre:'Рассказ',desc:'Двое мальчиков задумали побег в Америку — смешная и трогательная история о детских мечтах.',read:'https://books.yandex.ru/books/QvFyenbb/read-online',readLabel:'Читать на Яндекс.Книги',video:null,tags:['классика']},
-  {author:'В. М. Гаршин',title:'Сказка о жабе и розе',genre:'Сказка',desc:'Жаба хочет съесть прекрасную розу — маленькая история о красоте, зле и доброте.',read:'https://deti-online.com/skazki/o-zhabe-i-roze/',readLabel:'Читать на deti-online.com',video:null,tags:['классика']},
-  {author:'С. Т. Аксаков',title:'Аленький цветочек',genre:'Сказка',desc:'Русская «Красавица и чудовище»: купеческая дочь спасает страшного зверя силой любви.',read:'https://nukadeti.ru/skazki/alenkij_cvetochek',readLabel:'Читать на nukadeti.ru',video:'https://rutube.ru/video/797f347b0a2e607afbf4d49c998fd3e3/',tags:['классика']},
-  {author:'Л. Н. Андреев',title:'Кусака',genre:'Рассказ',desc:'Бездомная собака наконец нашла любовь и дом — но лето заканчивается. Трогательный рассказ о верности.',read:'https://nukadeti.ru/rasskazy/andreev-kusaka',readLabel:'Читать на nukadeti.ru',video:null,tags:['о животных']},
-  {author:'П. П. Бажов',title:'Серебряное копытце',genre:'Сказ',desc:'Старый охотник Кокованя и девочка Дарёнка ждут волшебного козлика с серебряным копытцем.',read:'https://nukadeti.ru/skazki/serebrjanoe_kopytce',readLabel:'Читать на nukadeti.ru',video:'https://rutube.ru/video/39189c0048091470ca645d7893601953/',tags:['Урал','сказ']},
-  {author:'П. П. Бажов',title:'Каменный цветок',genre:'Сказ',desc:'Мастер Данила ищет красоту, которая живёт в камне — и платит за это высокую цену.',read:'https://nukadeti.ru/skazki/kamennyj_cvetok',readLabel:'Читать на nukadeti.ru',video:null,tags:['Урал','сказ']},
-  {author:'Е. Л. Шварц',title:'Сказка о потерянном времени',genre:'Сказка',desc:'Ленивые школьники вдруг стали стариками — как вернуть потраченные впустую годы?',read:'https://nukadeti.ru/skazki/skazka_o_poterjannom_vremeni',readLabel:'Читать на nukadeti.ru',video:null,tags:['поучительная']},
-  {author:'Н. Н. Носов',title:'Приключения Незнайки и его друзей',genre:'Повесть',desc:'Незнайка хвастается, путает, изобретает и попадает в переделки — самая весёлая повесть о коротышках.',read:'https://books.yandex.ru/books/UvFXh32s/read-online',readLabel:'Читать на Яндекс.Книги',video:null,tags:['юмор','детям']},
-  {author:'В. Ю. Драгунский',title:'Главные реки',genre:'Рассказ',desc:'Дениска не выучил урок и придумывает самые невероятные отговорки — смешно и узнаваемо.',read:'https://nukadeti.ru/rasskazy/deniskiny-rasskazy',readLabel:'Читать на nukadeti.ru',video:null,tags:['юмор','детям']},
-  {author:'В. Ю. Драгунский',title:'Что любит Мишка',genre:'Рассказ',desc:'Каждый любит что-то своё — Дениска и Мишка спорят о самом главном в жизни.',read:'https://nukadeti.ru/rasskazy/deniskiny-rasskazy',readLabel:'Читать на nukadeti.ru',video:null,tags:['юмор','детям']},
-  {author:'Б. С. Житков',title:'Как я ловил человечков',genre:'Рассказ',desc:'Мальчик убеждён, что внутри игрушечного пароходика живут крошечные человечки — и решает их поймать.',read:'https://nukadeti.ru/rasskazy/kak_ya_lovil_chelovechkov',readLabel:'Читать на nukadeti.ru',video:null,tags:['детям']},
-  {author:'К. Г. Паустовский',title:'Корзина с еловыми шишками',genre:'Рассказ',desc:'Знаменитый композитор встречает в лесу маленькую девочку и обещает ей подарок — через годы.',read:'https://nukadeti.ru/rasskazy/korzina_s_elovymi_shishkami',readLabel:'Читать на nukadeti.ru',video:null,tags:['о природе','музыка']},
-  {author:'К. Г. Паустовский',title:'Дремучий медведь',genre:'Рассказ',desc:'История о мальчике Петьке, который живёт у реки и дружит с природой. Тихая, красивая проза.',read:'https://nukadeti.ru/rasskazy/dremuchij-medved',readLabel:'Читать на nukadeti.ru',video:null,tags:['о природе']},
-  {author:'М. М. Зощенко',title:'Ёлка',genre:'Рассказ',desc:'Маленький Минька берёт с ёлки самую красивую игрушку — весёлый рассказ о детской жадности.',read:'https://nukadeti.ru/rasskazy/zoshhenko-elka',readLabel:'Читать на nukadeti.ru',video:null,tags:['юмор','детям']},
-  {author:'В. В. Бианки',title:'Оранжевое горлышко',genre:'Рассказ',desc:'История смелой куропатки, которая защищает своих птенцов от опасностей лесной жизни.',read:'https://nukadeti.ru/rasskazy/oranzevoe_gorlyshko',readLabel:'Читать на nukadeti.ru',video:null,tags:['о природе','о животных']},
-  {author:'Д. Н. Мамин-Сибиряк',title:'Приёмыш',genre:'Рассказ',desc:'Старый охотник нашёл в тайге лебедя и выходил его — но дикая птица тоскует по свободе.',read:'https://nukadeti.ru/rasskazy/priyomysh',readLabel:'Читать на nukadeti.ru',video:null,tags:['о природе','о животных']},
-  {author:'Д. Н. Мамин-Сибиряк',title:'Серая шейка',genre:'Сказка',desc:'Маленькая уточка с перебитым крылом остаётся зимовать одна — грустная и добрая история.',read:'https://nukadeti.ru/skazki/seraja_shejka',readLabel:'Читать на nukadeti.ru',video:null,tags:['о животных']},
-  {author:'А. И. Куприн',title:'Барбос и Жулька',genre:'Рассказ',desc:'Два пса — большой и маленький — и история настоящей собачьей дружбы и самопожертвования.',read:'https://nukadeti.ru/rasskazy/barbos_i_zhulka',readLabel:'Читать на nukadeti.ru',video:null,tags:['о животных']},
-  {author:'А. И. Куприн',title:'Чудесный доктор',genre:'Рассказ',desc:'Нищая семья в отчаянии в канун Рождества — и незнакомый врач, который меняет всё.',read:'https://nukadeti.ru/rasskazy/kuprin-chudesnyj-doktor',readLabel:'Читать на nukadeti.ru',video:null,tags:['классика']},
-  {author:'М. М. Пришвин',title:'Выскочка',genre:'Рассказ',desc:'Сорока Выскочка торопится схватить косточку, но расплачивается за хвастовство хвостом.',read:'https://nukadeti.ru/rasskazy/vyskochka',readLabel:'Читать на nukadeti.ru',video:null,tags:['о животных','юмор']},
-  {author:'В. П. Астафьев',title:'Стрижонок Скрип',genre:'Рассказ',desc:'Маленький стриж учится летать, теряет маму и впервые сталкивается с большим и опасным миром.',read:'https://nukadeti.ru/rasskazy/strizhenok_skrip',readLabel:'Читать на nukadeti.ru',video:null,tags:['о природе','о животных']},
-  {author:'А. П. Платонов',title:'Корова',genre:'Рассказ',desc:'Мальчик Вася дружит с коровой на железнодорожном разъезде — простая история о любви и потере.',read:'https://classica-online.ru/catalog/korova-andrej-platonov/',readLabel:'Читать на classica-online.ru',video:null,tags:['классика']},
-  {author:'Ю. И. Коваль',title:'Приключения Васи Куролесова',genre:'Повесть',desc:'Забавная детективная история: деревенский паренёк Вася нечаянно покупает на рынке украденного поросёнка.',read:'https://loveread.ec/view_global.php?id=56',readLabel:'Читать на loveread.ec',video:null,tags:['юмор','приключения']},
-  {author:'Е. С. Велтистов',title:'Приключения Электроника',genre:'Повесть',desc:'Мальчик-робот Электроник живёт вместо своего двойника в школе — смешная советская фантастика.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['фантастика','детям']},
-  {author:'К. Булычёв',title:'Путешествие Алисы',genre:'Повесть',desc:'Алиса Селезнёва и её папа летят на другие планеты в поисках редких животных для московского зоопарка.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['фантастика','приключения']},
-  {author:'В. К. Железников',title:'Чучело',genre:'Повесть',desc:'Лена Бессольцева переходит в новый класс и сталкивается с жестокостью одноклассников. Сильная книга.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['о дружбе','серьёзная']},
-  {author:'В. Голявкин',title:'Тетрадки под дождём',genre:'Рассказ',desc:'Коллекция весёлых коротких историй о школе и детстве от мастера юмористического рассказа.',read:'https://nukadeti.ru/rasskazy/golyavkin',readLabel:'Читать на nukadeti.ru',video:null,tags:['юмор','детям']},
-  {author:'В. Голявкин',title:'Как я под партой сидел',genre:'Рассказ',desc:'Один из самых смешных рассказов Голявкина — маленькая зарисовка из школьной жизни.',read:'https://nukadeti.ru/rasskazy/golyavkin',readLabel:'Читать на nukadeti.ru',video:null,tags:['юмор','детям']},
-  {author:'А. С. Некрасов',title:'Приключения капитана Врунгеля',genre:'Повесть',desc:'Капитан Врунгель отправляется в кругосветку на яхте «Беда» — весёлые морские приключения.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['юмор','приключения']},
-  {author:'Джек Лондон',title:'Белый клык',genre:'Повесть',desc:'История волка-полукровки, который прошёл путь от дикой тайги до человеческого жилья и любви.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['о животных','приключения']},
-  {author:'Н. А. Кун',title:'Мифы Древней Греции',genre:'Мифы',desc:'Сизиф, Тантал и Прометей — три истории о людях, которые осмелились бросить вызов богам.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['мифы','история']},
-  {author:'А. Н. Толстой',title:'Золотой ключик, или Приключения Буратино',genre:'Сказочная повесть',desc:'Деревянный мальчик Буратино ищет золотой ключик — весёлая и добрая русская версия Пиноккио.',read:'https://nukadeti.ru/skazki/zolotoj_klyuchik',readLabel:'Читать на nukadeti.ru',video:null,tags:['сказка','детям']},
-  {author:'Г. Х. Андерсен',title:'Русалочка',genre:'Сказка',desc:'Русалочка отдаёт голос ради любви к принцу — печальная и красивая сказка о жертве и мечте.',read:'https://nukadeti.ru/skazki/rusalochka',readLabel:'Читать на nukadeti.ru',video:null,tags:['сказка','зарубежная']},
-  {author:'Марк Твен',title:'Приключения Тома Сойера',genre:'Роман',desc:'Неугомонный Том Сойер красит забор, влюбляется и становится свидетелем преступления.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['зарубежная','приключения']},
-  {author:'Л. Ф. Баум',title:'Страна Оз',genre:'Сказка',desc:'Девочка Дороти попадает в волшебную страну и вместе с Пугалом, Жестяным дровосеком и Львом ищет дорогу домой.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['сказка','зарубежная']},
-  {author:'Ф. Бёрнетт',title:'Маленький лорд Фаунтлерой',genre:'Повесть',desc:'Простой американский мальчик вдруг оказывается наследником английского лорда.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['зарубежная']},
-  {author:'Дж. М. Барри',title:'Питер Пэн',genre:'Сказка',desc:'Мальчик, который не хочет взрослеть, уносит детей в волшебную Нетландию.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['сказка','зарубежная']},
-  {author:'Астрид Линдгрен',title:'Малыш и Карлсон',genre:'Повесть',desc:'Толстый самодовольный человечек, живущий на крыше, — лучший друг одинокого мальчика Малыша.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:'https://rutube.ru/video/ac9fb3cc5838379c5c426953eb55bd40/',tags:['сказка','зарубежная']},
-  {author:'Рэй Брэдбери',title:'Всё лето в один день',genre:'Рассказ',desc:'На Венере, где солнце появляется раз в 7 лет, дети обижают девочку — короткий и сильный рассказ.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['фантастика','зарубежная']},
-  {author:'Туве Янссон',title:'Сказки про Муми-тролля',genre:'Сказки',desc:'Добрые, задумчивые истории из Муми-дола, где живут странные и милые существа.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['сказка','зарубежная']},
-  {author:'А. де Сент-Экзюпери',title:'Маленький принц',genre:'Сказка',desc:'Маленький принц прилетает с далёкой звезды и учит лётчика (и нас) видеть главное.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:'https://rutube.ru/video/9ddeda05b7baaede29ebb1a1b5398b08/',tags:['сказка','зарубежная','философская']},
-  {author:'Дж. Свифт',title:'Путешествия Гулливера',genre:'Роман',desc:'Корабельный врач попадает в страну лилипутов, потом к великанам — острая сатира в форме сказки.',read:'https://books.yandex.ru/books/',readLabel:'Читать на Яндекс.Книги',video:null,tags:['зарубежная','приключения']}
+  {author:'А. С. Пушкин',title:'Сказка о мёртвой царевне',genre:'Сказка',desc:'Добро против зла: молодая царевна, семь богатырей и злая мачеха с волшебным зеркалом.',read:'https://ilibrary.ru/text/472/p.1/index.html',video:'https://rutube.ru/video/71bb14175374cda5b76401b6a47ee19a/',tags:['классика']},
+  {author:'А. С. Пушкин',title:'Руслан и Людмила',genre:'Поэма',desc:'Волшебная поэма о рыцаре Руслане, который отправляется спасать свою невесту от злого колдуна.',read:'https://ilibrary.ru/text/466/p.1/index.html',video:null,tags:['классика']},
+  {author:'М. Ю. Лермонтов',title:'Ашик-Кериб',genre:'Сказка',desc:'Восточная сказка о бедном ашуге, его любви к богатой красавице и дороге домой через годы странствий.',read:'https://nukadeti.ru/skazki/ashik_kerib',video:null,tags:['классика']},
+  {author:'П. П. Ершов',title:'Конёк-Горбунок',genre:'Сказка-поэма',desc:'Иванушка и его верный конёк-горбунок против капризного царя: добро, смекалка и волшебство.',read:'https://ilibrary.ru/text/1033/p.1/index.html',video:'https://rutube.ru/video/1c5122fede827c30aab2ba036a052c05/',tags:['классика']},
+  {author:'И. А. Крылов',title:'Волк и журавль',genre:'Басня',desc:'Жадный волк, добрый журавль и урок о неблагодарности — коротко и метко.',read:'https://ilibrary.ru/text/1083/p.1/index.html',video:null,tags:['классика','юмор']},
+  {author:'И. А. Крылов',title:'Квартет',genre:'Басня',desc:'Четыре горе-музыканта никак не могут сыграть вместе — в чём же дело?',read:'https://ilibrary.ru/text/1083/p.1/index.html',video:null,tags:['классика','юмор']},
+  {author:'В. Ф. Одоевский',title:'Городок в табакерке',genre:'Сказка',desc:'Мальчик Миша засыпает и попадает внутрь музыкальной табакерки, где живут колокольчики.',read:'https://nukadeti.ru/skazki/gorodok_v_tabakerke',video:null,tags:['классика']},
+  {author:'А. П. Чехов',title:'Мальчики',genre:'Рассказ',desc:'Двое мальчиков задумали побег в Америку — смешная и трогательная история о детских мечтах.',read:'https://ilibrary.ru/text/988/p.1/index.html',video:null,tags:['классика']},
+  {author:'В. М. Гаршин',title:'Сказка о жабе и розе',genre:'Сказка',desc:'Жаба хочет уничтожить прекрасную розу — маленькая история о красоте и доброте.',read:'https://nukadeti.ru/skazki/skazka_o_zhabe_i_roze',video:null,tags:['классика']},
+  {author:'С. Т. Аксаков',title:'Аленький цветочек',genre:'Сказка',desc:'Русская «Красавица и чудовище»: купеческая дочь спасает страшного зверя силой любви.',read:'https://nukadeti.ru/skazki/alenkij_cvetochek',video:'https://rutube.ru/video/797f347b0a2e607afbf4d49c998fd3e3/',tags:['классика']},
+  {author:'Л. Н. Андреев',title:'Кусака',genre:'Рассказ',desc:'Бездомная собака наконец нашла любовь и дом — но лето заканчивается. О верности и предательстве.',read:'https://nukadeti.ru/rasskazy/andreev-kusaka',video:null,tags:['о животных']},
+  {author:'П. П. Бажов',title:'Серебряное копытце',genre:'Сказ',desc:'Старый охотник Кокованя и девочка Дарёнка ждут волшебного козлика с серебряным копытцем.',read:'https://nukadeti.ru/skazki/serebrjanoe_kopytce',video:'https://rutube.ru/video/39189c0048091470ca645d7893601953/',tags:['Урал','сказ']},
+  {author:'П. П. Бажов',title:'Каменный цветок',genre:'Сказ',desc:'Мастер Данила ищет красоту, которая живёт в камне — и платит за это высокую цену.',read:'https://nukadeti.ru/skazki/kamennyj_cvetok',video:null,tags:['Урал','сказ']},
+  {author:'Е. Л. Шварц',title:'Сказка о потерянном времени',genre:'Сказка',desc:'Ленивые школьники вдруг стали стариками — как вернуть потраченные впустую годы?',read:'https://nukadeti.ru/skazki/skazka_o_poterjannom_vremeni',video:null,tags:['поучительная']},
+  {author:'Н. Н. Носов',title:'Приключения Незнайки и его друзей',genre:'Повесть',desc:'Незнайка хвастается, путает, изобретает и попадает в переделки — самая весёлая повесть о коротышках.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-neznajki-i-ego-druzej',video:null,tags:['юмор','детям']},
+  {author:'В. Ю. Драгунский',title:'Главные реки',genre:'Рассказ',desc:'Дениска не выучил урок и придумывает самые невероятные отговорки — смешно и узнаваемо.',read:'https://nukadeti.ru/rasskazy/deniskiny-rasskazy',video:null,tags:['юмор','детям']},
+  {author:'В. Ю. Драгунский',title:'Что любит Мишка',genre:'Рассказ',desc:'Каждый любит что-то своё — Дениска и Мишка спорят о самом главном в жизни.',read:'https://nukadeti.ru/rasskazy/deniskiny-rasskazy',video:null,tags:['юмор','детям']},
+  {author:'Б. С. Житков',title:'Как я ловил человечков',genre:'Рассказ',desc:'Мальчик убеждён, что внутри игрушечного пароходика живут крошечные человечки — и решает их поймать.',read:'https://nukadeti.ru/rasskazy/kak_ya_lovil_chelovechkov',video:null,tags:['детям']},
+  {author:'К. Г. Паустовский',title:'Корзина с еловыми шишками',genre:'Рассказ',desc:'Знаменитый композитор встречает в лесу маленькую девочку и обещает ей подарок — через долгие годы.',read:'https://nukadeti.ru/rasskazy/korzina_s_elovymi_shishkami',video:null,tags:['о природе']},
+  {author:'К. Г. Паустовский',title:'Дремучий медведь',genre:'Рассказ',desc:'История о мальчике Петьке, который живёт у реки и дружит с природой. Тихая, красивая проза.',read:'https://nukadeti.ru/rasskazy/dremuchij-medved',video:null,tags:['о природе']},
+  {author:'М. М. Зощенко',title:'Ёлка',genre:'Рассказ',desc:'Маленький Минька берёт с ёлки самую красивую игрушку — весёлый рассказ о детской жадности.',read:'https://nukadeti.ru/rasskazy/zoshhenko-elka',video:null,tags:['юмор','детям']},
+  {author:'В. В. Бианки',title:'Оранжевое горлышко',genre:'Рассказ',desc:'История смелой куропатки, которая защищает своих птенцов от опасностей лесной жизни.',read:'https://nukadeti.ru/rasskazy/oranzevoe_gorlyshko',video:null,tags:['о природе','о животных']},
+  {author:'Д. Н. Мамин-Сибиряк',title:'Приёмыш',genre:'Рассказ',desc:'Старый охотник нашёл в тайге лебедя и выходил его — но дикая птица тоскует по свободе.',read:'https://nukadeti.ru/rasskazy/priyomysh',video:null,tags:['о животных']},
+  {author:'Д. Н. Мамин-Сибиряк',title:'Серая шейка',genre:'Сказка',desc:'Маленькая уточка с перебитым крылом остаётся зимовать одна — грустная и добрая история.',read:'https://nukadeti.ru/skazki/seraja_shejka',video:null,tags:['о животных']},
+  {author:'А. И. Куприн',title:'Барбос и Жулька',genre:'Рассказ',desc:'Два пса — большой и маленький — история настоящей собачьей дружбы и самопожертвования.',read:'https://nukadeti.ru/rasskazy/barbos_i_zhulka',video:null,tags:['о животных']},
+  {author:'А. И. Куприн',title:'Чудесный доктор',genre:'Рассказ',desc:'Нищая семья в отчаянии накануне Рождества — и незнакомый врач, который меняет всё.',read:'https://nukadeti.ru/rasskazy/kuprin-chudesnyj-doktor',video:null,tags:['классика']},
+  {author:'М. М. Пришвин',title:'Выскочка',genre:'Рассказ',desc:'Сорока Выскочка торопится схватить косточку, но расплачивается за хвастовство хвостом.',read:'https://nukadeti.ru/rasskazy/vyskochka',video:null,tags:['о животных','юмор']},
+  {author:'В. П. Астафьев',title:'Стрижонок Скрип',genre:'Рассказ',desc:'Маленький стриж учится летать, теряет маму и впервые сталкивается с большим миром.',read:'https://nukadeti.ru/rasskazy/strizhenok_skrip',video:null,tags:['о природе','о животных']},
+  {author:'А. П. Платонов',title:'Корова',genre:'Рассказ',desc:'Мальчик Вася дружит с коровой на железнодорожном разъезде — простая история о любви и потере.',read:'https://nukadeti.ru/rasskazy/platonov-korova',video:null,tags:['классика']},
+  {author:'Ю. И. Коваль',title:'Приключения Васи Куролесова',genre:'Повесть',desc:'Деревенский паренёк Вася нечаянно покупает на рынке украденного поросёнка — смешной детектив.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-vasi-kurolesova',video:null,tags:['юмор','приключения']},
+  {author:'Е. С. Велтистов',title:'Приключения Электроника',genre:'Повесть',desc:'Мальчик-робот Электроник живёт вместо своего двойника в школе — весёлая советская фантастика.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-ehlektronika',video:null,tags:['фантастика','детям']},
+  {author:'К. Булычёв',title:'Путешествие Алисы',genre:'Повесть',desc:'Алиса Селезнёва и её папа летят на другие планеты в поисках редких животных для зоопарка.',read:'https://www.rusf.ru/kb/stories/puteshestvie_alisy/text-01.htm',video:null,tags:['фантастика','приключения']},
+  {author:'В. К. Железников',title:'Чучело',genre:'Повесть',desc:'Лена Бессольцева переходит в новый класс и сталкивается с жестокостью одноклассников. Сильная книга.',read:'https://nukadeti.ru/rasskazy/chuchelo',video:null,tags:['о дружбе','серьёзная']},
+  {author:'В. Голявкин',title:'Тетрадки под дождём',genre:'Рассказ',desc:'Два мальчика хотели сбежать с урока и спустили портфели из окна — курьёзная история.',read:'https://nukadeti.ru/rasskazy/tetradki-pod-dozhdem',video:null,tags:['юмор','детям']},
+  {author:'В. Голявкин',title:'Как я под партой сидел',genre:'Рассказ',desc:'Один из самых смешных рассказов Голявкина — маленькая зарисовка из школьной жизни.',read:'https://nukadeti.ru/rasskazy/kak_ya_pod_partoj_sidel',video:null,tags:['юмор','детям']},
+  {author:'А. С. Некрасов',title:'Приключения капитана Врунгеля',genre:'Повесть',desc:'Капитан Врунгель отправляется в кругосветку на яхте «Беда» — весёлые морские приключения.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-kapitana-vrungelya',video:null,tags:['юмор','приключения']},
+  {author:'Джек Лондон',title:'Белый клык',genre:'Повесть',desc:'История волка-полукровки, который прошёл путь от дикой тайги до человеческого жилья и любви.',read:'https://ilibrary.ru/text/4586/p.1/index.html',video:null,tags:['о животных','приключения']},
+  {author:'Н. А. Кун',title:'Мифы Древней Греции',genre:'Мифы',desc:'Сизиф, Тантал и Прометей — истории о людях, которые осмелились бросить вызов богам.',read:'https://nukadeti.ru/rasskazy/mify-drevnej-grecii',video:null,tags:['мифы','история']},
+  {author:'А. Н. Толстой',title:'Золотой ключик, или Приключения Буратино',genre:'Сказочная повесть',desc:'Деревянный мальчик Буратино ищет золотой ключик — весёлая русская версия Пиноккио.',read:'https://nukadeti.ru/skazki/zolotoj_klyuchik',video:null,tags:['сказка','детям']},
+  {author:'Г. Х. Андерсен',title:'Русалочка',genre:'Сказка',desc:'Русалочка отдаёт голос ради любви к принцу — печальная и красивая сказка о жертве и мечте.',read:'https://nukadeti.ru/skazki/rusalochka',video:null,tags:['сказка','зарубежная']},
+  {author:'Марк Твен',title:'Приключения Тома Сойера',genre:'Роман',desc:'Неугомонный Том Сойер красит забор, влюбляется и становится свидетелем преступления.',read:'https://ilibrary.ru/text/1092/p.1/index.html',video:null,tags:['зарубежная','приключения']},
+  {author:'Л. Ф. Баум',title:'Страна Оз',genre:'Сказка',desc:'Дороти попадает в волшебную страну и вместе с Пугалом, Дровосеком и Львом ищет дорогу домой.',read:'https://nukadeti.ru/skazki/strana_oz',video:null,tags:['сказка','зарубежная']},
+  {author:'Дж. М. Барри',title:'Питер Пэн',genre:'Сказка',desc:'Мальчик, который не хочет взрослеть, уносит детей в волшебную Нетландию.',read:'https://nukadeti.ru/skazki/piter_pen',video:null,tags:['сказка','зарубежная']},
+  {author:'Астрид Линдгрен',title:'Малыш и Карлсон',genre:'Повесть',desc:'Толстый самодовольный человечек с крыши — лучший друг одинокого мальчика Малыша.',read:'https://nukadeti.ru/skazki/malysh_i_karlson',video:'https://rutube.ru/video/ac9fb3cc5838379c5c426953eb55bd40/',tags:['сказка','зарубежная']},
+  {author:'Рэй Брэдбери',title:'Всё лето в один день',genre:'Рассказ',desc:'На Венере, где солнце появляется раз в 7 лет, дети обижают девочку — короткий и пронзительный рассказ.',read:'https://nukadeti.ru/rasskazy/ves-leto-za-odin-den',video:null,tags:['фантастика','зарубежная']},
+  {author:'Туве Янссон',title:'Сказки про Муми-тролля',genre:'Сказки',desc:'Добрые, задумчивые истории из Муми-дола, где живут странные и милые существа.',read:'https://nukadeti.ru/skazki/skazki_pro_mumi_trollya',video:null,tags:['сказка','зарубежная']},
+  {author:'А. де Сент-Экзюпери',title:'Маленький принц',genre:'Сказка',desc:'Маленький принц прилетает с далёкой звезды и учит лётчика (и нас) видеть главное.',read:'https://ilibrary.ru/text/521/p.1/index.html',video:'https://rutube.ru/video/9ddeda05b7baaede29ebb1a1b5398b08/',tags:['сказка','зарубежная','философская']},
+  {author:'Дж. Свифт',title:'Путешествия Гулливера',genre:'Роман',desc:'Корабельный врач попадает к лилипутам, потом к великанам — острая сатира в форме сказки.',read:'https://ilibrary.ru/text/524/p.1/index.html',video:null,tags:['зарубежная','приключения']}
 ];
 
 const ALL_GENRES=[...new Set(books.map(b=>b.genre))].sort();
@@ -186,33 +193,28 @@ function render(){
   const q=currentQuery.toLowerCase().trim();
   const filtered=books.filter(b=>{
     const hay=(b.author+' '+b.title+' '+b.genre+' '+b.tags.join(' ')).toLowerCase();
-    const matchQ=!q||hay.includes(q);
-    const matchG=currentGenre==='Все'||b.genre===currentGenre;
-    return matchQ&&matchG;
+    return(!q||hay.includes(q))&&(currentGenre==='Все'||b.genre===currentGenre);
   });
   const grid=document.getElementById('grid');
-  const stats=document.getElementById('stats');
-  stats.innerHTML=`Показано произведений: <strong>${filtered.length}</strong> из ${books.length}`;
+  document.getElementById('stats').innerHTML=`Найдено: <strong>${filtered.length}</strong> из ${books.length} произведений`;
   if(!filtered.length){
     grid.innerHTML='<div class="no-results"><strong>🔍</strong>Ничего не нашлось — попробуй другой запрос</div>';
     return;
   }
   grid.innerHTML=filtered.map(b=>{
-    const readBtn=b.read?`<a class="btn primary" href="${b.read}" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>${b.readLabel||'Читать'}</a>`:'';
-    const videoBtn=b.video?`<a class="btn video" href="${b.video}" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>Мультфильм на RuTube</a>`:'';
-    const noAction=(!b.read&&!b.video)?'<span class="no-action">Ссылки уточняются</span>':'';
-    const tagsList=[b.genre,...b.tags].map((tag,i)=>`<span class="tag${i===0?' genre':''}">${tag}</span>`).join('');
+    const readBtn=`<a class="btn primary" href="${b.read}" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Читать бесплатно</a>`;
+    const videoBtn=b.video?`<a class="btn video" href="${b.video}" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>Мультфильм</a>`:'';
+    const tags=[b.genre,...b.tags].map((tag,i)=>`<span class="tag${i===0?' genre':''}">${tag}</span>`).join('');
     return`<article class="card">
       <div class="card-author">${b.author}</div>
       <h2 class="card-title">${b.title}</h2>
       <p class="card-desc">${b.desc}</p>
-      <div class="card-tags">${tagsList}</div>
-      <div class="card-actions">${readBtn}${videoBtn}${noAction}</div>
+      <div class="card-tags">${tags}</div>
+      <div class="card-actions">${readBtn}${videoBtn}</div>
     </article>`;
   }).join('');
 }
 
-// Build genre filters
 const filtersEl=document.getElementById('filters');
 ['Все',...ALL_GENRES].forEach(g=>{
   const btn=document.createElement('button');
@@ -227,11 +229,10 @@ const filtersEl=document.getElementById('filters');
   filtersEl.appendChild(btn);
 });
 
-document.getElementById('search').addEventListener('input',e=>{
-  currentQuery=e.target.value;
-  render();
-});
-
+const searchInput=document.getElementById('search');
+searchInput.addEventListener('input',e=>{currentQuery=e.target.value;render();});
+searchInput.addEventListener('keydown',e=>{if(e.key==='Enter'){currentQuery=e.target.value;render();}});
+document.getElementById('searchBtn').addEventListener('click',()=>{currentQuery=searchInput.value;render();});
 render();
 </script>
 </body>
