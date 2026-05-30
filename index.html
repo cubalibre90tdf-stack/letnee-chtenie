@@ -3,24 +3,27 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Летнее чтение — 4 класс</title>
+<title>Летнее чтение — 4А класс</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23b85c2c'/><text y='48' x='7' font-size='48'>📚</text></svg>">
 <style>
 :root,[data-theme="light"]{
-  --bg:#faf7f2;--surface:#fffcf7;--surface2:#fff;
+  --bg:#faf7f2;--surface:#fffcf7;--surface2:#fff;--surface3:#f3ede4;
   --border:#e6dfd4;--text:#2a2218;--muted:#7a7168;--faint:#c2baad;
   --accent:#b85c2c;--accent-h:#8f4320;--accent-soft:#f5ede6;
   --green:#2a6e4f;--green-soft:#e5f0eb;
+  --blue:#1e6fa8;--blue-soft:#e3f0f8;
+  --gold:#c49a00;--gold-soft:#fdf5d6;
   --shadow:0 4px 20px rgba(60,40,20,0.09);--r:18px;
 }
 [data-theme="dark"]{
-  --bg:#1a1610;--surface:#211e18;--surface2:#2a261e;
+  --bg:#1a1610;--surface:#211e18;--surface2:#2a261e;--surface3:#201c16;
   --border:#3a352a;--text:#e8e0d4;--muted:#8a8278;--faint:#504840;
   --accent:#e8845a;--accent-h:#f0a07a;--accent-soft:#3a2418;
   --green:#4fa87a;--green-soft:#1a3028;
+  --blue:#4a9fd4;--blue-soft:#1a2e3a;
+  --gold:#e8c040;--gold-soft:#2a2410;
   --shadow:0 4px 20px rgba(0,0,0,0.3);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -28,162 +31,385 @@ html{scroll-behavior:smooth;}
 body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;}
 a{color:inherit;text-decoration:none;}
 img{display:block;max-width:100%;}
-.header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
-.logo{display:flex;align-items:center;gap:10px;font-family:'Lora',serif;font-size:21px;font-weight:600;}
-.toggle-btn{background:none;border:1px solid var(--border);border-radius:10px;padding:8px 10px;cursor:pointer;display:flex;align-items:center;color:var(--muted);transition:all .18s;}
+button{font-family:'Nunito',sans-serif;}
+
+/* ===== HEADER ===== */
+.header{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:var(--shadow);}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Lora',serif;font-size:20px;font-weight:600;}
+.logo-badge{background:var(--accent);color:#fff;font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;font-family:'Nunito',sans-serif;letter-spacing:.04em;}
+.header-right{display:flex;gap:8px;align-items:center;}
+.toggle-btn{background:none;border:1px solid var(--border);border-radius:10px;padding:7px 9px;cursor:pointer;display:flex;align-items:center;color:var(--muted);transition:all .18s;}
 .toggle-btn:hover{background:var(--accent-soft);color:var(--accent);}
-.hero{background:linear-gradient(135deg,var(--accent-soft) 0%,var(--surface) 60%);border-bottom:1px solid var(--border);padding:36px 20px 28px;}
-.hero-inner{max-width:900px;margin:0 auto;}
-.hero h1{font-family:'Lora',serif;font-size:clamp(26px,5vw,42px);line-height:1.15;margin-bottom:10px;}
+.progress-badge{background:var(--green-soft);color:var(--green);border:1px solid var(--green);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:800;cursor:pointer;transition:all .18s;}
+.progress-badge:hover{background:var(--green);color:#fff;}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,var(--accent-soft) 0%,var(--surface) 60%);border-bottom:1px solid var(--border);padding:32px 20px 24px;}
+.hero-inner{max-width:960px;margin:0 auto;}
+.hero h1{font-family:'Lora',serif;font-size:clamp(22px,4.5vw,40px);line-height:1.15;margin-bottom:8px;}
 .hero h1 em{font-style:normal;color:var(--accent);}
-.hero p{color:var(--muted);font-size:16px;line-height:1.6;max-width:660px;margin-bottom:22px;}
-.search-wrap{display:flex;gap:8px;max-width:620px;}
-.search-wrap input{flex:1;padding:13px 18px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;font-family:'Nunito',sans-serif;background:var(--surface2);color:var(--text);outline:none;transition:border-color .2s;}
+.hero p{color:var(--muted);font-size:15px;line-height:1.6;max-width:600px;margin-bottom:18px;}
+.search-wrap{display:flex;gap:8px;max-width:580px;}
+.search-wrap input{flex:1;padding:12px 16px;border:1.5px solid var(--border);border-radius:12px;font-size:15px;font-family:'Nunito',sans-serif;background:var(--surface2);color:var(--text);outline:none;transition:border-color .2s;}
 .search-wrap input:focus{border-color:var(--accent);}
 .search-wrap input::placeholder{color:var(--faint);}
-.search-btn{padding:13px 20px;border-radius:12px;background:var(--accent);border:none;color:#fff;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;display:flex;align-items:center;gap:7px;transition:background .18s;white-space:nowrap;}
+.search-btn{padding:12px 18px;border-radius:12px;background:var(--accent);border:none;color:#fff;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .18s;white-space:nowrap;}
 .search-btn:hover{background:var(--accent-h);}
-.stats{margin-top:12px;font-size:14px;color:var(--muted);}
-.stats strong{color:var(--accent);}
-.filters{max-width:1140px;margin:22px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap;}
-.filter-btn{padding:7px 14px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);font-size:13px;font-weight:700;cursor:pointer;color:var(--muted);transition:all .18s;}
+.hero-stats{margin-top:10px;font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;}
+.hero-stats strong{color:var(--accent);}
+.hero-stats .stat-green{color:var(--green);}
+
+/* ===== TABS ===== */
+.tabs{max-width:1160px;margin:0 auto;padding:16px 20px 0;display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--border);}
+.tab{padding:8px 16px;border-radius:12px 12px 0 0;border:1px solid transparent;background:none;font-size:13px;font-weight:700;cursor:pointer;color:var(--muted);transition:all .18s;border-bottom:none;}
+.tab.active{background:var(--surface);border-color:var(--border);border-bottom-color:var(--surface);color:var(--accent);}
+.tab:hover:not(.active){color:var(--text);background:var(--surface3);}
+
+/* ===== FILTERS ===== */
+.filters{max-width:1160px;margin:14px auto 0;padding:0 20px;display:flex;gap:6px;flex-wrap:wrap;}
+.filter-btn{padding:6px 13px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);font-size:12px;font-weight:700;cursor:pointer;color:var(--muted);transition:all .18s;}
 .filter-btn.active,.filter-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
-.grid{max-width:1140px;margin:20px auto 60px;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
+
+/* ===== MONTH BANNER ===== */
+.month-plan{max-width:1160px;margin:16px auto 0;padding:0 20px;}
+.month-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.month-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;}
+.month-card h3{font-size:14px;font-weight:800;color:var(--accent);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.month-card ul{list-style:none;padding:0;}
+.month-card li{font-size:12px;color:var(--muted);padding:2px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.month-card li:last-child{border-bottom:none;}
+.month-card li span{font-size:11px;color:var(--faint);}
+
+/* ===== GRID ===== */
+.grid{max-width:1160px;margin:16px auto 16px;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;}
 .no-results{grid-column:1/-1;text-align:center;padding:48px;color:var(--muted);font-size:18px;}
-.no-results strong{display:block;font-size:36px;margin-bottom:8px;}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:11px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s;}
+
+/* ===== CARD ===== */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s;position:relative;}
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(60,40,20,0.13);}
-.card-author{font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);}
-.card-title{font-family:'Lora',serif;font-size:19px;line-height:1.25;color:var(--text);}
-.card-desc{font-size:14px;color:var(--muted);line-height:1.5;}
-.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
-.tag{padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:700;}
+.card.done{border-color:var(--green);background:color-mix(in srgb,var(--green-soft) 40%,var(--surface));}
+.card.bookmarked .bm-icon{color:var(--gold);}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;}
+.card-author{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);}
+.card-actions-top{display:flex;gap:4px;}
+.icon-btn{background:none;border:none;cursor:pointer;padding:4px;border-radius:8px;color:var(--faint);transition:all .18s;line-height:1;font-size:18px;}
+.icon-btn:hover{color:var(--text);background:var(--surface3);}
+.icon-btn.active{color:var(--green);}
+.icon-btn.bm-icon.active{color:var(--gold);}
+.card-title{font-family:'Lora',serif;font-size:18px;line-height:1.25;color:var(--text);}
+.card-desc{font-size:13px;color:var(--muted);line-height:1.5;flex:1;}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.tag{padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;}
 .tag.genre{background:var(--green-soft);color:var(--green);}
-.card-actions{display:flex;gap:8px;flex-wrap:wrap;padding-top:2px;}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:10px;font-size:13px;font-weight:700;border:1.5px solid var(--border);color:var(--text);background:var(--surface2);cursor:pointer;transition:all .18s;white-space:nowrap;}
+.card-month{font-size:11px;color:var(--faint);font-weight:700;}
+.card-btns{display:flex;gap:7px;flex-wrap:wrap;margin-top:2px;}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:800;border:1.5px solid var(--border);color:var(--text);background:var(--surface2);cursor:pointer;transition:all .18s;white-space:nowrap;font-family:'Nunito',sans-serif;}
 .btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
-.btn.primary:hover{background:var(--accent-h);border-color:var(--accent-h);}
+.btn.primary:hover{background:var(--accent-h);}
 .btn.video{background:var(--green-soft);border-color:var(--green);color:var(--green);}
 .btn.video:hover{background:var(--green);color:#fff;}
-footer{text-align:center;padding:24px;color:var(--faint);font-size:13px;border-top:1px solid var(--border);}
-@media(max-width:600px){
-  .hero{padding:24px 16px 20px;}
-  .grid{padding:0 12px;}
-  .filters{padding:0 12px;}
+.btn.diary{background:var(--blue-soft);border-color:var(--blue);color:var(--blue);}
+.btn.diary:hover{background:var(--blue);color:#fff;}
+.stars{display:flex;gap:2px;}
+.star{font-size:18px;cursor:pointer;color:var(--faint);transition:color .12s;line-height:1;}
+.star.on{color:var(--gold);}
+.star:hover{color:var(--gold);}
+.card-note{font-size:12px;color:var(--muted);font-style:italic;padding:6px 10px;background:var(--surface3);border-radius:8px;margin-top:2px;}
+
+/* ===== RANDOM BTN ===== */
+.random-wrap{max-width:1160px;margin:0 auto 0;padding:0 20px;display:flex;justify-content:flex-end;}
+.random-btn{display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:12px;background:var(--gold-soft);border:1.5px solid var(--gold);color:var(--gold);font-size:13px;font-weight:800;cursor:pointer;transition:all .18s;font-family:'Nunito',sans-serif;}
+.random-btn:hover{background:var(--gold);color:#fff;}
+
+/* ===== MODAL ===== */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;display:none;align-items:center;justify-content:center;padding:16px;}
+.overlay.open{display:flex;}
+.modal{background:var(--surface2);border:1px solid var(--border);border-radius:22px;padding:28px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.25);}
+.modal h2{font-family:'Lora',serif;font-size:22px;margin-bottom:16px;color:var(--text);}
+.modal-close{float:right;background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);margin-top:-4px;}
+.modal label{display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:4px;margin-top:14px;}
+.modal textarea{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:'Nunito',sans-serif;background:var(--surface);color:var(--text);resize:vertical;min-height:70px;outline:none;}
+.modal textarea:focus{border-color:var(--accent);}
+.modal input[type=text]{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:'Nunito',sans-serif;background:var(--surface);color:var(--text);outline:none;}
+.modal input:focus{border-color:var(--accent);}
+.modal-actions{display:flex;gap:8px;margin-top:20px;justify-content:flex-end;}
+
+/* ===== DIARY SECTION ===== */
+.diary-list{max-width:1160px;margin:16px auto 60px;padding:0 20px;display:flex;flex-direction:column;gap:12px;}
+.diary-entry{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;display:grid;grid-template-columns:1fr auto;gap:8px;}
+.diary-entry h3{font-family:'Lora',serif;font-size:17px;margin-bottom:4px;}
+.diary-entry .de-author{font-size:11px;text-transform:uppercase;font-weight:800;color:var(--accent);margin-bottom:8px;}
+.diary-entry .de-row{font-size:13px;color:var(--muted);margin-bottom:4px;}
+.diary-entry .de-row strong{color:var(--text);}
+.diary-entry .de-stars{font-size:16px;margin-top:4px;}
+.de-print{align-self:start;}
+.empty-diary{text-align:center;padding:40px;color:var(--muted);}
+.empty-diary .big{font-size:40px;display:block;margin-bottom:8px;}
+
+/* ===== BOOKMARKS SECTION ===== */
+.bookmarks-note{max-width:1160px;margin:0 auto;padding:16px 20px 0;color:var(--muted);font-size:13px;}
+
+/* ===== PROGRESS SECTION ===== */
+.prog-section{max-width:1160px;margin:16px auto;padding:0 20px;}
+.prog-bar-wrap{background:var(--surface3);border-radius:999px;height:14px;overflow:hidden;margin:10px 0;}
+.prog-bar{background:linear-gradient(90deg,var(--green),var(--accent));height:100%;border-radius:999px;transition:width .5s ease;}
+.prog-info{font-size:14px;color:var(--muted);margin-bottom:6px;}
+.prog-info strong{color:var(--text);font-size:18px;}
+
+/* ===== FOOTER ===== */
+footer{text-align:center;padding:24px;color:var(--faint);font-size:12px;border-top:1px solid var(--border);margin-top:40px;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .month-grid{grid-template-columns:1fr;}
+  .grid{padding:0 12px;grid-template-columns:1fr;}
+  .filters,.tabs,.random-wrap,.prog-section,.diary-list,.bookmarks-note,.month-plan{padding-left:12px;padding-right:12px;}
   .search-wrap{flex-direction:column;}
-  .search-btn{justify-content:center;}
+  .hero{padding:20px 14px 18px;}
 }
 </style>
 </head>
 <body>
+
+<!-- HEADER -->
 <header class="header">
   <div class="logo">
-    <svg width="32" height="32" viewBox="0 0 64 64" aria-label="Логотип книги">
+    <svg width="32" height="32" viewBox="0 0 64 64" aria-label="Книга">
       <rect width="64" height="64" rx="14" fill="#b85c2c"/>
       <rect x="10" y="14" width="26" height="36" rx="3" fill="#fff" fill-opacity=".95"/>
-      <rect x="12" y="16" width="22" height="2.5" rx="1" fill="#b85c2c" fill-opacity=".4"/>
-      <rect x="12" y="21" width="22" height="2" rx="1" fill="#b85c2c" fill-opacity=".25"/>
-      <rect x="12" y="25" width="16" height="2" rx="1" fill="#b85c2c" fill-opacity=".25"/>
+      <rect x="12" y="19" width="22" height="2.5" rx="1" fill="#b85c2c" fill-opacity=".35"/>
+      <rect x="12" y="24" width="22" height="2" rx="1" fill="#b85c2c" fill-opacity=".2"/>
+      <rect x="12" y="29" width="15" height="2" rx="1" fill="#b85c2c" fill-opacity=".2"/>
       <rect x="36" y="14" width="18" height="36" rx="3" fill="#8f4320"/>
-      <path d="M45 26 l3 4 l3-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <path d="M45 23 l6 0" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-      <path d="M45 34 l6 0M45 38 l4 0" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
       <path d="M36 14 Q34 32 36 50" stroke="#2a1a0a" stroke-width="1" fill="none" opacity=".15"/>
-      <circle cx="50" cy="46" r="9" fill="#e8d07a"/>
-      <path d="M50 42v4l2.5 2.5" stroke="#8f4320" stroke-width="2" stroke-linecap="round"/>
     </svg>
     Летнее чтение
+    <span class="logo-badge">4А класс</span>
   </div>
-  <button class="toggle-btn" data-theme-toggle aria-label="Тёмная тема">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-  </button>
+  <div class="header-right">
+    <button class="progress-badge" id="progressToggle" onclick="showTab('progress')">📚 Прогресс</button>
+    <button class="toggle-btn" data-theme-toggle aria-label="Тема">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>Список литературы —<br>переход в <em>4 класс</em></h1>
-    <p>Найди нужное произведение, читай бесплатно онлайн или смотри мультфильм. Без регистрации и подписок.</p>
+    <h1>Список литературы —<br>переход в <em>4А класс</em></h1>
+    <p>Читай онлайн бесплатно, без регистрации. Отмечай прочитанные книги, веди читательский дневник.</p>
     <div class="search-wrap">
       <input id="search" type="search" placeholder="Введи название или автора…" autocomplete="off"/>
       <button class="search-btn" id="searchBtn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         Найти
       </button>
     </div>
-    <p class="stats" id="stats"></p>
+    <div class="hero-stats">
+      <span>Всего книг: <strong id="totalCount">0</strong></span>
+      <span>Прочитано: <strong class="stat-green" id="readCount">0</strong></span>
+      <span>Закладки: <strong id="bmCount">0</strong></span>
+    </div>
   </div>
 </section>
 
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" onclick="showTab('books')" id="tab-books">📚 Все книги</button>
+  <button class="tab" onclick="showTab('months')" id="tab-months">📅 По месяцам</button>
+  <button class="tab" onclick="showTab('bookmarks')" id="tab-bookmarks">🔖 Закладки</button>
+  <button class="tab" onclick="showTab('diary')" id="tab-diary">📓 Дневник</button>
+  <button class="tab" onclick="showTab('progress')" id="tab-progress">📊 Прогресс</button>
+</div>
+
+<!-- FILTERS -->
 <div class="filters" id="filters"></div>
+
+<!-- RANDOM -->
+<div class="random-wrap" id="randomWrap">
+  <button class="random-btn" onclick="pickRandom()">
+    🎲 Выбери за меня!
+  </button>
+</div>
+
+<!-- MONTH PLAN -->
+<div class="month-plan" id="monthPlan" style="display:none"></div>
+
+<!-- MAIN GRID -->
 <div class="grid" id="grid"></div>
-<footer>Сайт для родителей 4 класса · Все ссылки — бесплатные ресурсы без подписки и регистрации</footer>
+
+<!-- DIARY SECTION -->
+<div class="diary-list" id="diarySection" style="display:none"></div>
+
+<!-- BOOKMARKS NOTE -->
+<div class="bookmarks-note" id="bmNote" style="display:none"></div>
+
+<!-- PROGRESS SECTION -->
+<div class="prog-section" id="progSection" style="display:none"></div>
+
+<!-- MODAL: Читательский дневник -->
+<div class="overlay" id="diaryModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2 id="modalTitle">Читательский дневник</h2>
+    <div id="modalAuthor" style="font-size:13px;color:var(--muted);margin-bottom:4px;"></div>
+    <label>Оценка</label>
+    <div class="stars" id="modalStars">
+      <span class="star" data-v="1">★</span>
+      <span class="star" data-v="2">★</span>
+      <span class="star" data-v="3">★</span>
+      <span class="star" data-v="4">★</span>
+      <span class="star" data-v="5">★</span>
+    </div>
+    <label>Главные герои</label>
+    <input type="text" id="dHeroes" placeholder="Перечисли главных героев"/>
+    <label>Главная мысль</label>
+    <textarea id="dIdea" placeholder="О чём эта книга? Чему учит?"></textarea>
+    <label>Мой любимый момент</label>
+    <textarea id="dFav" placeholder="Какой эпизод понравился больше всего?"></textarea>
+    <label>Мои впечатления</label>
+    <textarea id="dNote" placeholder="Что ты думаешь об этой книге?"></textarea>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Отмена</button>
+      <button class="btn primary" onclick="saveDiary()">💾 Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Random highlight -->
+<div class="overlay" id="randomModal">
+  <div class="modal" style="text-align:center">
+    <button class="modal-close" onclick="closeRandom()">✕</button>
+    <div style="font-size:48px;margin-bottom:10px;">🎲</div>
+    <div style="font-size:13px;font-weight:800;text-transform:uppercase;color:var(--accent);letter-spacing:.06em;margin-bottom:4px;" id="rAuthor"></div>
+    <h2 id="rTitle" style="font-family:'Lora',serif;font-size:26px;margin-bottom:10px;"></h2>
+    <p id="rDesc" style="font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:20px;"></p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <a id="rReadBtn" class="btn primary" href="#" target="_blank">📖 Читать</a>
+      <button class="btn" onclick="pickRandom()">🎲 Другую!</button>
+      <button class="btn" onclick="closeRandom()">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<footer>Сайт для 4А класса · Все книги доступны бесплатно, без регистрации, без VPN</footer>
 
 <script>
+// ===== THEME =====
 (function(){
   const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
   let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
   r.setAttribute('data-theme',d);
-  const moonSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-  const sunSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
-  t&&t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);t.innerHTML=d==='dark'?sunSVG:moonSVG;});
+  const moon='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  const sun='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+  if(t) t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);t.innerHTML=d==='dark'?sun:moon;});
 })();
 
-const books=[
-  {author:'А. С. Пушкин',title:'Сказка о мёртвой царевне',genre:'Сказка',desc:'Добро против зла: молодая царевна, семь богатырей и злая мачеха с волшебным зеркалом.',read:'https://ilibrary.ru/text/472/p.1/index.html',video:'https://rutube.ru/video/71bb14175374cda5b76401b6a47ee19a/',tags:['классика']},
-  {author:'А. С. Пушкин',title:'Руслан и Людмила',genre:'Поэма',desc:'Волшебная поэма о рыцаре Руслане, который отправляется спасать свою невесту от злого колдуна.',read:'https://ilibrary.ru/text/466/p.1/index.html',video:null,tags:['классика']},
-  {author:'М. Ю. Лермонтов',title:'Ашик-Кериб',genre:'Сказка',desc:'Восточная сказка о бедном ашуге, его любви к богатой красавице и дороге домой через годы странствий.',read:'https://ilibrary.ru/text/4098/index.html',video:null,tags:['классика']},
-  {author:'П. П. Ершов',title:'Конёк-Горбунок',genre:'Сказка-поэма',desc:'Иванушка и его верный конёк-горбунок против капризного царя: добро, смекалка и волшебство.',read:'https://ilibrary.ru/text/1033/p.1/index.html',video:'https://rutube.ru/video/1c5122fede827c30aab2ba036a052c05/',tags:['классика']},
-  {author:'И. А. Крылов',title:'Волк и журавль',genre:'Басня',desc:'Жадный волк, добрый журавль и урок о неблагодарности — коротко и метко.',read:'https://ilibrary.ru/text/1083/p.1/index.html',video:null,tags:['классика','юмор']},
-  {author:'И. А. Крылов',title:'Квартет',genre:'Басня',desc:'Четыре горе-музыканта никак не могут сыграть вместе — в чём же дело?',read:'https://ilibrary.ru/text/1083/p.1/index.html',video:null,tags:['классика','юмор']},
-  {author:'В. Ф. Одоевский',title:'Городок в табакерке',genre:'Сказка',desc:'Мальчик Миша засыпает и попадает внутрь музыкальной табакерки, где живут колокольчики.',read:'https://deti-online.com/knigi/gorodok-v-tabakerke/',video:null,tags:['классика']},
-  {author:'А. П. Чехов',title:'Мальчики',genre:'Рассказ',desc:'Двое мальчиков задумали побег в Америку — смешная и трогательная история о детских мечтах.',read:'https://ilibrary.ru/text/988/p.1/index.html',video:null,tags:['классика']},
-  {author:'В. М. Гаршин',title:'Сказка о жабе и розе',genre:'Сказка',desc:'Жаба хочет уничтожить прекрасную розу — маленькая история о красоте и доброте.',read:'https://deti-online.com/skazki/o-zhabe-i-roze/',video:null,tags:['классика']},
-  {author:'С. Т. Аксаков',title:'Аленький цветочек',genre:'Сказка',desc:'Русская «Красавица и чудовище»: купеческая дочь спасает страшного зверя силой любви.',read:'https://deti-online.com/skazki/alenkiy-cvetochek/',video:'https://rutube.ru/video/797f347b0a2e607afbf4d49c998fd3e3/',tags:['классика']},
-  {author:'Л. Н. Андреев',title:'Кусака',genre:'Рассказ',desc:'Бездомная собака наконец нашла любовь и дом — но лето заканчивается. О верности и предательстве.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-andreeva/kusaka-andreev/',video:null,tags:['о животных']},
-  {author:'П. П. Бажов',title:'Серебряное копытце',genre:'Сказ',desc:'Старый охотник Кокованя и девочка Дарёнка ждут волшебного козлика с серебряным копытцем.',read:'https://deti-online.com/skazki/serebryanoe-kopytce/',video:'https://rutube.ru/video/39189c0048091470ca645d7893601953/',tags:['Урал','сказ']},
-  {author:'П. П. Бажов',title:'Каменный цветок',genre:'Сказ',desc:'Мастер Данила ищет красоту, которая живёт в камне — и платит за это высокую цену.',read:'https://deti-online.com/skazki/kamennyy-tsvetok/',video:null,tags:['Урал','сказ']},
-  {author:'Е. Л. Шварц',title:'Сказка о потерянном времени',genre:'Сказка',desc:'Ленивые школьники вдруг стали стариками — как вернуть потраченные впустую годы?',read:'https://mishka-knizhka.ru/skazki-dlay-detey/skazki-russkih-pisatelej/skazki-shvarc/skazka-o-poteryannom-vremeni/',video:null,tags:['поучительная']},
-  {author:'Н. Н. Носов',title:'Приключения Незнайки и его друзей',genre:'Повесть',desc:'Незнайка хвастается, путает, изобретает и попадает в переделки — самая весёлая повесть о коротышках.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-nosova/priklyucheniya-neznayki-i-ego-druzej-nosov/',video:null,tags:['юмор','детям']},
-  {author:'В. Ю. Драгунский',title:'Главные реки',genre:'Рассказ',desc:'Дениска не выучил урок и придумывает самые невероятные отговорки — смешно и узнаваемо.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-dragunskogo/glavnye-reki-dragunskij-v/',video:null,tags:['юмор','детям']},
-  {author:'В. Ю. Драгунский',title:'Что любит Мишка',genre:'Рассказ',desc:'Каждый любит что-то своё — Дениска и Мишка спорят о самом главном в жизни.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-dragunskogo/chto-ljubit-mishka-dragunskij-v/',video:null,tags:['юмор','детям']},
-  {author:'Б. С. Житков',title:'Как я ловил человечков',genre:'Рассказ',desc:'Мальчик убеждён, что внутри игрушечного пароходика живут крошечные человечки — и решает их поймать.',read:'https://deti-online.com/knigi/kak-ya-lovil-chelovechkov/',video:null,tags:['детям']},
-  {author:'К. Г. Паустовский',title:'Корзина с еловыми шишками',genre:'Рассказ',desc:'Знаменитый композитор встречает в лесу маленькую девочку и обещает ей подарок — через долгие годы.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-paustovskogo/korzina-s-elovymi-shishkami-paustovskij/',video:null,tags:['о природе']},
-  {author:'К. Г. Паустовский',title:'Дремучий медведь',genre:'Рассказ',desc:'История о мальчике Петьке, который живёт у реки и дружит с природой. Тихая, красивая проза.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-paustovskogo/dremuchij-medved-paustovskij/',video:null,tags:['о природе']},
-  {author:'М. М. Зощенко',title:'Ёлка',genre:'Рассказ',desc:'Маленький Минька берёт с ёлки самую красивую игрушку — весёлый рассказ о детской жадности.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-zoshhenko/elka-zoshhenko/',video:null,tags:['юмор','детям']},
-  {author:'В. В. Бианки',title:'Оранжевое горлышко',genre:'Рассказ',desc:'История смелой куропатки, которая защищает своих птенцов от опасностей лесной жизни.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-bianki/oranzhevoe-gorlyshko-bianki/',video:null,tags:['о природе','о животных']},
-  {author:'Д. Н. Мамин-Сибиряк',title:'Приёмыш',genre:'Рассказ',desc:'Старый охотник нашёл в тайге лебедя и выходил его — но дикая птица тоскует по свободе.',read:'https://mishka-knizhka.ru/skazki-dlay-detey/russkie-skazochniki/skazki-mamin-sibiryak/priemysh/',video:null,tags:['о животных']},
-  {author:'Д. Н. Мамин-Сибиряк',title:'Серая шейка',genre:'Сказка',desc:'Маленькая уточка с перебитым крылом остаётся зимовать одна — грустная и добрая история.',read:'https://deti-online.com/skazki/seraya-sheyka/',video:null,tags:['о животных']},
-  {author:'А. И. Куприн',title:'Барбос и Жулька',genre:'Рассказ',desc:'Два пса — большой и маленький — история настоящей собачьей дружбы и самопожертвования.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-kuprina/barbos-i-zhulka-kuprin/',video:null,tags:['о животных']},
-  {author:'А. И. Куприн',title:'Чудесный доктор',genre:'Рассказ',desc:'Нищая семья в отчаянии накануне Рождества — и незнакомый врач, который меняет всё.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-kuprina/chudesnyj-doktor-kuprin/',video:null,tags:['классика']},
-  {author:'М. М. Пришвин',title:'Выскочка',genre:'Рассказ',desc:'Сорока Выскочка торопится схватить косточку, но расплачивается за хвастовство хвостом.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-prishvina/vyskochka-prishvin/',video:null,tags:['о животных','юмор']},
-  {author:'В. П. Астафьев',title:'Стрижонок Скрип',genre:'Рассказ',desc:'Маленький стриж учится летать, теряет маму и впервые сталкивается с большим миром.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-astafyeva/strizhenok-skrip-astafev/',video:null,tags:['о природе','о животных']},
-  {author:'А. П. Платонов',title:'Корова',genre:'Рассказ',desc:'Мальчик Вася дружит с коровой на железнодорожном разъезде — простая история о любви и потере.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-platonova/korova-platonov/',video:null,tags:['классика']},
-  {author:'Ю. И. Коваль',title:'Приключения Васи Куролесова',genre:'Повесть',desc:'Деревенский паренёк Вася нечаянно покупает на рынке украденного поросёнка — смешной детектив.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-vasi-kurolesova',video:null,tags:['юмор','приключения']},
-  {author:'Е. С. Велтистов',title:'Приключения Электроника',genre:'Повесть',desc:'Мальчик-робот Электроник живёт вместо своего двойника в школе — весёлая советская фантастика.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-ehlektronika',video:null,tags:['фантастика','детям']},
-  {author:'К. Булычёв',title:'Путешествие Алисы',genre:'Повесть',desc:'Алиса Селезнёва и её папа летят на другие планеты в поисках редких животных для зоопарка.',read:'https://www.rusf.ru/kb/stories/puteshestvie_alisy/text-01.htm',video:null,tags:['фантастика','приключения']},
-  {author:'В. К. Железников',title:'Чучело',genre:'Повесть',desc:'Лена Бессольцева переходит в новый класс и сталкивается с жестокостью одноклассников. Сильная книга.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-zheleznikova/chuchelo-zheleznikov/',video:null,tags:['о дружбе','серьёзная']},
-  {author:'В. Голявкин',title:'Тетрадки под дождём',genre:'Рассказ',desc:'Два мальчика хотели сбежать с урока и спустили портфели из окна — курьёзная история.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-golyavkina/tetradki-pod-dozhdem-golyavkin/',video:null,tags:['юмор','детям']},
-  {author:'В. Голявкин',title:'Как я под партой сидел',genre:'Рассказ',desc:'Один из самых смешных рассказов Голявкина — маленькая зарисовка из школьной жизни.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-golyavkina/kak-ya-pod-partoj-sidel-golyavkin/',video:null,tags:['юмор','детям']},
-  {author:'А. С. Некрасов',title:'Приключения капитана Врунгеля',genre:'Повесть',desc:'Капитан Врунгель отправляется в кругосветку на яхте «Беда» — весёлые морские приключения.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-nekrasova/priklyucheniya-kapitana-vrungelya-nekrasov/',video:null,tags:['юмор','приключения']},
-  {author:'Джек Лондон',title:'Белый клык',genre:'Повесть',desc:'История волка-полукровки, который прошёл путь от дикой тайги до человеческого жилья и любви.',read:'https://ilibrary.ru/text/4586/p.1/index.html',video:null,tags:['о животных','приключения']},
-  {author:'Н. А. Кун',title:'Мифы Древней Греции',genre:'Мифы',desc:'Сизиф, Тантал и Прометей — истории о людях, которые осмелились бросить вызов богам.',read:'https://mishka-knizhka.ru/mify-drevnej-grecii/',video:null,tags:['мифы','история']},
-  {author:'А. Н. Толстой',title:'Золотой ключик, или Приключения Буратино',genre:'Сказочная повесть',desc:'Деревянный мальчик Буратино ищет золотой ключик — весёлая русская версия Пиноккио.',read:'https://deti-online.com/knigi/zolotoy-klyuchik-ili-priklyucheniya-buratino/',video:null,tags:['сказка','детям']},
-  {author:'Г. Х. Андерсен',title:'Русалочка',genre:'Сказка',desc:'Русалочка отдаёт голос ради любви к принцу — печальная и красивая сказка о жертве и мечте.',read:'https://deti-online.com/skazki/andersena/rusalochka/',video:null,tags:['сказка','зарубежная']},
-  {author:'Марк Твен',title:'Приключения Тома Сойера',genre:'Роман',desc:'Неугомонный Том Сойер красит забор, влюбляется и становится свидетелем преступления.',read:'https://ilibrary.ru/text/1092/p.1/index.html',video:null,tags:['зарубежная','приключения']},
-  {author:'Л. Ф. Баум',title:'Страна Оз',genre:'Сказка',desc:'Дороти попадает в волшебную страну и вместе с Пугалом, Дровосеком и Львом ищет дорогу домой.',read:'https://deti-online.com/knigi/udivitelniy-volshebnik-iz-strani-oz/',video:null,tags:['сказка','зарубежная']},
-  {author:'Ф. Бёрнетт',title:'Маленький лорд Фаунтлерой',genre:'Повесть',desc:'Простой американский мальчик вдруг оказывается наследником английского лорда.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/zarubezhnaya-literatura/malenkij-lord-fauntelroj-bernet/',video:null,tags:['зарубежная']},
-  {author:'Дж. М. Барри',title:'Питер Пэн',genre:'Сказка',desc:'Мальчик, который не хочет взрослеть, уносит детей в волшебную Нетландию.',read:'https://deti-online.com/knigi/piter-pen/',video:null,tags:['сказка','зарубежная']},
-  {author:'Астрид Линдгрен',title:'Малыш и Карлсон',genre:'Повесть',desc:'Толстый самодовольный человечек с крыши — лучший друг одинокого мальчика Малыша.',read:'https://deti-online.com/knigi/malysh-i-karlson/',video:'https://rutube.ru/video/ac9fb3cc5838379c5c426953eb55bd40/',tags:['сказка','зарубежная']},
-  {author:'Рэй Брэдбери',title:'Всё лето в один день',genre:'Рассказ',desc:'На Венере, где солнце появляется раз в 7 лет, дети обижают девочку — короткий и пронзительный рассказ.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/zarubezhnaya-literatura/vse-leto-za-odin-den-bredberi/',video:null,tags:['фантастика','зарубежная']},
-  {author:'Туве Янссон',title:'Сказки про Муми-тролля',genre:'Сказки',desc:'Добрые, задумчивые истории из Муми-дола, где живут странные и милые существа.',read:'https://deti-online.com/knigi/skazki-pro-mumi-trollya/',video:null,tags:['сказка','зарубежная']},
-  {author:'А. де Сент-Экзюпери',title:'Маленький принц',genre:'Сказка',desc:'Маленький принц прилетает с далёкой звезды и учит лётчика (и нас) видеть главное.',read:'https://ilibrary.ru/text/521/p.1/index.html',video:'https://rutube.ru/video/9ddeda05b7baaede29ebb1a1b5398b08/',tags:['сказка','зарубежная','философская']},
-  {author:'Дж. Свифт',title:'Путешествия Гулливера',genre:'Роман',desc:'Корабельный врач попадает к лилипутам, потом к великанам — острая сатира в форме сказки.',read:'https://ilibrary.ru/text/524/p.1/index.html',video:null,tags:['зарубежная','приключения']}
+// ===== DATA =====
+const books = [
+  {id:1,author:'А. С. Пушкин',title:'Сказка о мёртвой царевне',genre:'Сказка',month:'июнь',desc:'Добро против зла: молодая царевна, семь богатырей и злая мачеха с волшебным зеркалом.',read:'https://ilibrary.ru/text/472/p.1/index.html',video:'https://rutube.ru/video/71bb14175374cda5b76401b6a47ee19a/',tags:['классика']},
+  {id:2,author:'А. С. Пушкин',title:'Руслан и Людмила',genre:'Поэма',month:'июнь',desc:'Волшебная поэма о рыцаре Руслане, который отправляется спасать свою невесту от злого колдуна.',read:'https://ilibrary.ru/text/466/p.1/index.html',video:null,tags:['классика']},
+  {id:3,author:'М. Ю. Лермонтов',title:'Ашик-Кериб',genre:'Сказка',month:'июнь',desc:'Восточная сказка о бедном ашуге, его любви к богатой красавице и дороге домой через годы странствий.',read:'https://ilibrary.ru/text/4098/index.html',video:null,tags:['классика']},
+  {id:4,author:'П. П. Ершов',title:'Конёк-Горбунок',genre:'Сказка-поэма',month:'июнь',desc:'Иванушка и его верный конёк-горбунок против капризного царя: добро, смекалка и волшебство.',read:'https://ilibrary.ru/text/1033/p.1/index.html',video:null,tags:['классика']},
+  {id:5,author:'И. А. Крылов',title:'Волк и журавль / Квартет',genre:'Басни',month:'июнь',desc:'Две знаменитые басни: о неблагодарном волке и о четырёх горе-музыкантах — коротко и метко.',read:'https://ilibrary.ru/text/1083/p.1/index.html',video:null,tags:['классика','юмор']},
+  {id:6,author:'В. Ф. Одоевский',title:'Городок в табакерке',genre:'Сказка',month:'июнь',desc:'Мальчик Миша засыпает и попадает внутрь музыкальной табакерки, где живут колокольчики.',read:'https://ilibrary.ru/text/4303/index.html',video:null,tags:['классика']},
+  {id:7,author:'А. П. Чехов',title:'Мальчики',genre:'Рассказ',month:'июнь',desc:'Двое мальчиков задумали побег в Америку — смешная и трогательная история о детских мечтах.',read:'https://ilibrary.ru/text/988/p.1/index.html',video:null,tags:['классика']},
+  {id:8,author:'В. М. Гаршин',title:'Сказка о жабе и розе',genre:'Сказка',month:'июнь',desc:'Жаба хочет уничтожить прекрасную розу — маленькая история о красоте и доброте.',read:'https://nukadeti.ru/skazki/garshin_skazka_o_zhabe_i_roze',video:null,tags:['классика']},
+  {id:9,author:'С. Т. Аксаков',title:'Аленький цветочек',genre:'Сказка',month:'июнь',desc:'Русская «Красавица и чудовище»: купеческая дочь спасает страшного зверя силой любви.',read:'https://nukadeti.ru/skazki/aksakov-alenkij-cvetochek',video:null,tags:['классика']},
+  {id:10,author:'Л. Н. Андреев',title:'Кусака',genre:'Рассказ',month:'июль',desc:'Бездомная собака наконец нашла любовь и дом — но лето заканчивается. О верности и предательстве.',read:'https://nukadeti.ru/rasskazy/kusaka',video:null,tags:['о животных']},
+  {id:11,author:'П. П. Бажов',title:'Серебряное копытце',genre:'Сказ',month:'июнь',desc:'Старый охотник Кокованя и девочка Дарёнка ждут волшебного козлика с серебряным копытцем.',read:'https://nukadeti.ru/skazki/bazhov-serebryanoe-kopytce',video:null,tags:['Урал','сказ']},
+  {id:12,author:'П. П. Бажов',title:'Каменный цветок',genre:'Сказ',month:'июль',desc:'Мастер Данила ищет красоту, которая живёт в камне — и платит за это высокую цену.',read:'https://nukadeti.ru/skazki/bazhov-kamennyj-cvetok',video:null,tags:['Урал','сказ']},
+  {id:13,author:'Е. Л. Шварц',title:'Сказка о потерянном времени',genre:'Сказка',month:'июль',desc:'Ленивые школьники вдруг стали стариками — как вернуть потраченные впустую годы?',read:'https://nukadeti.ru/skazki/skazka-o-poteryannom-vremeni',video:null,tags:['поучительная']},
+  {id:14,author:'Н. Н. Носов',title:'Приключения Незнайки и его друзей',genre:'Повесть',month:'июль',desc:'Незнайка хвастается, путает, изобретает и попадает в переделки — самая весёлая повесть о коротышках.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-neznajki-i-ego-druzej',video:null,tags:['юмор','детям']},
+  {id:15,author:'В. Ю. Драгунский',title:'Главные реки',genre:'Рассказ',month:'июль',desc:'Дениска не выучил урок и придумывает самые невероятные отговорки — смешно и узнаваемо.',read:'https://nukadeti.ru/rasskazy/deniskin-rasskazy/glavnye-reki',video:null,tags:['юмор','детям']},
+  {id:16,author:'В. Ю. Драгунский',title:'Что любит Мишка',genre:'Рассказ',month:'июль',desc:'Каждый любит что-то своё — Дениска и Мишка спорят о самом главном в жизни.',read:'https://nukadeti.ru/rasskazy/deniskin-rasskazy/chto-lyubit-mishka',video:null,tags:['юмор','детям']},
+  {id:17,author:'Б. С. Житков',title:'Как я ловил человечков',genre:'Рассказ',month:'июль',desc:'Мальчик убеждён, что внутри игрушечного пароходика живут крошечные человечки — и решает их поймать.',read:'https://nukadeti.ru/rasskazy/kak-ya-lovil-chelovechkov',video:null,tags:['детям']},
+  {id:18,author:'К. Г. Паустовский',title:'Корзина с еловыми шишками',genre:'Рассказ',month:'июль',desc:'Знаменитый композитор встречает в лесу маленькую девочку и обещает ей подарок — через долгие годы.',read:'https://nukadeti.ru/rasskazy/korzina-s-elovymi-shishkami',video:null,tags:['о природе']},
+  {id:19,author:'К. Г. Паустовский',title:'Дремучий медведь',genre:'Рассказ',month:'июль',desc:'История о мальчике Петьке, который живёт у реки и дружит с природой. Тихая, красивая проза.',read:'https://nukadeti.ru/rasskazy/dremuchij-medved',video:null,tags:['о природе']},
+  {id:20,author:'М. М. Зощенко',title:'Ёлка',genre:'Рассказ',month:'август',desc:'Маленький Минька берёт с ёлки самую красивую игрушку — весёлый рассказ о детской жадности.',read:'https://nukadeti.ru/rasskazy/elka-zoshchenko',video:null,tags:['юмор','детям']},
+  {id:21,author:'В. В. Бианки',title:'Оранжевое горлышко',genre:'Рассказ',month:'июль',desc:'История смелой куропатки, которая защищает своих птенцов от опасностей лесной жизни.',read:'https://nukadeti.ru/rasskazy/oranzhevoe-gorlyshko',video:null,tags:['о природе','о животных']},
+  {id:22,author:'Д. Н. Мамин-Сибиряк',title:'Приёмыш',genre:'Рассказ',month:'июль',desc:'Старый охотник нашёл в тайге лебедя и выходил его — но дикая птица тоскует по свободе.',read:'https://nukadeti.ru/rasskazy/priemysh',video:null,tags:['о животных']},
+  {id:23,author:'Д. Н. Мамин-Сибиряк',title:'Серая шейка',genre:'Сказка',month:'июль',desc:'Маленькая уточка с перебитым крылом остаётся зимовать одна — грустная и добрая история.',read:'https://nukadeti.ru/skazki/seryaya-sheyka',video:null,tags:['о животных']},
+  {id:24,author:'А. И. Куприн',title:'Барбос и Жулька',genre:'Рассказ',month:'август',desc:'Два пса — большой и маленький — история настоящей собачьей дружбы и самопожертвования.',read:'https://nukadeti.ru/rasskazy/barbos-i-zhulka',video:null,tags:['о животных']},
+  {id:25,author:'А. И. Куприн',title:'Чудесный доктор',genre:'Рассказ',month:'август',desc:'Нищая семья в отчаянии накануне Рождества — и незнакомый врач, который меняет всё.',read:'https://nukadeti.ru/rasskazy/chudesnyj-doktor',video:null,tags:['классика']},
+  {id:26,author:'М. М. Пришвин',title:'Выскочка',genre:'Рассказ',month:'август',desc:'Сорока Выскочка торопится схватить косточку, но расплачивается за хвастовство хвостом.',read:'https://nukadeti.ru/rasskazy/vyskochka',video:null,tags:['о животных','юмор']},
+  {id:27,author:'В. П. Астафьев',title:'Стрижонок Скрип',genre:'Рассказ',month:'август',desc:'Маленький стриж учится летать, теряет маму и впервые сталкивается с большим миром.',read:'https://nukadeti.ru/rasskazy/strizhenok-skrip',video:null,tags:['о природе','о животных']},
+  {id:28,author:'А. П. Платонов',title:'Корова',genre:'Рассказ',month:'август',desc:'Мальчик Вася дружит с коровой на железнодорожном разъезде — простая история о любви и потере.',read:'https://nukadeti.ru/rasskazy/korova-platonov',video:null,tags:['классика']},
+  {id:29,author:'Ю. И. Коваль',title:'Приключения Васи Куролесова',genre:'Повесть',month:'август',desc:'Деревенский паренёк Вася нечаянно покупает на рынке украденного поросёнка — смешной детектив.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-vasi-kurolesova',video:null,tags:['юмор','приключения']},
+  {id:30,author:'В. Голявкин',title:'Тетрадки под дождём',genre:'Рассказ',month:'август',desc:'Два мальчика хотели сбежать с урока и спустили портфели из окна — курьёзная история.',read:'https://deti-online.com/knigi/tetradki-pod-dozhdem/',video:null,tags:['юмор','детям']},
+  {id:31,author:'В. Голявкин',title:'Как я под партой сидел',genre:'Рассказ',month:'август',desc:'Один из самых смешных рассказов Голявкина — маленькая зарисовка из школьной жизни.',read:'https://nukadeti.ru/rasskazy/kak-ya-pod-partoj-sidel',video:null,tags:['юмор','детям']},
+  {id:32,author:'В. К. Железников',title:'Чучело',genre:'Повесть',month:'август',desc:'Лена Бессольцева переходит в новый класс и сталкивается с жестокостью одноклассников. Сильная книга.',read:'https://nukadeti.ru/rasskazy/chuchelo',video:null,tags:['о дружбе','серьёзная']},
+  {id:33,author:'А. С. Некрасов',title:'Приключения капитана Врунгеля',genre:'Повесть',month:'август',desc:'Капитан Врунгель отправляется в кругосветку на яхте «Беда» — весёлые морские приключения.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-kapitana-vrungelya',video:null,tags:['юмор','приключения']},
+  {id:34,author:'Е. С. Велтистов',title:'Приключения Электроника',genre:'Повесть',month:'август',desc:'Мальчик-робот Электроник живёт вместо своего двойника в школе — весёлая советская фантастика.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-ehlektronika',video:null,tags:['фантастика','детям']},
+  {id:35,author:'К. Булычёв',title:'Путешествие Алисы',genre:'Повесть',month:'август',desc:'Алиса Селезнёва и её папа летят на другие планеты в поисках редких животных для зоопарка.',read:'https://nukadeti.ru/rasskazy/puteshestvie-alisy',video:null,tags:['фантастика','приключения']},
+  {id:36,author:'Н. А. Кун',title:'Мифы Древней Греции',genre:'Мифы',month:'июль',desc:'Сизиф, Тантал и Прометей — истории о людях, которые осмелились бросить вызов богам.',read:'https://nukadeti.ru/skazki/mify-drevnej-grecii',video:null,tags:['мифы','история']},
+  {id:37,author:'А. Н. Толстой',title:'Золотой ключик, или Приключения Буратино',genre:'Сказочная повесть',month:'июнь',desc:'Деревянный мальчик Буратино ищет золотой ключик — весёлая русская версия Пиноккио.',read:'https://nukadeti.ru/skazki/zolotoj-klyuchik',video:null,tags:['сказка','детям']},
+  {id:38,author:'Г. Х. Андерсен',title:'Русалочка',genre:'Сказка',month:'июнь',desc:'Русалочка отдаёт голос ради любви к принцу — печальная и красивая сказка о жертве и мечте.',read:'https://nukadeti.ru/skazki/andersen_rusalochka',video:null,tags:['сказка','зарубежная']},
+  {id:39,author:'Марк Твен',title:'Приключения Тома Сойера',genre:'Роман',month:'июль',desc:'Неугомонный Том Сойер красит забор, влюбляется и становится свидетелем преступления.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-toma-sojera',video:null,tags:['зарубежная','приключения']},
+  {id:40,author:'Л. Ф. Баум',title:'Страна Оз',genre:'Сказка',month:'июль',desc:'Дороти попадает в волшебную страну и вместе с Пугалом, Дровосеком и Львом ищет дорогу домой.',read:'https://nukadeti.ru/skazki/strana-oz',video:null,tags:['сказка','зарубежная']},
+  {id:41,author:'Дж. М. Барри',title:'Питер Пэн',genre:'Сказка',month:'август',desc:'Мальчик, который не хочет взрослеть, уносит детей в волшебную Нетландию.',read:'https://nukadeti.ru/skazki/piter_pehn',video:null,tags:['сказка','зарубежная']},
+  {id:42,author:'Астрид Линдгрен',title:'Малыш и Карлсон',genre:'Повесть',month:'июль',desc:'Толстый самодовольный человечек с крыши — лучший друг одинокого мальчика Малыша.',read:'https://nukadeti.ru/rasskazy/malysh-i-karlson',video:null,tags:['сказка','зарубежная']},
+  {id:43,author:'Рэй Брэдбери',title:'Всё лето в один день',genre:'Рассказ',month:'август',desc:'На Венере, где солнце появляется раз в 7 лет, дети обижают девочку — короткий и пронзительный рассказ.',read:'https://nukadeti.ru/rasskazy/vse-leto-v-odin-den',video:null,tags:['фантастика','зарубежная']},
+  {id:44,author:'Туве Янссон',title:'Сказки про Муми-тролля',genre:'Сказки',month:'август',desc:'Добрые, задумчивые истории из Муми-дола, где живут странные и милые существа.',read:'https://nukadeti.ru/skazki/skazki-pro-mumi-trollya',video:null,tags:['сказка','зарубежная']},
+  {id:45,author:'А. де Сент-Экзюпери',title:'Маленький принц',genre:'Сказка',month:'август',desc:'Маленький принц прилетает с далёкой звезды и учит лётчика (и нас) видеть главное.',read:'https://nukadeti.ru/skazki/malenkij-princ',video:null,tags:['сказка','зарубежная','философская']},
+  {id:46,author:'Ф. Бёрнетт',title:'Маленький лорд Фаунтлерой',genre:'Повесть',month:'август',desc:'Простой американский мальчик вдруг оказывается наследником английского лорда.',read:'https://nukadeti.ru/rasskazy/malenkij-lord-fauntleroj',video:null,tags:['зарубежная']},
 ];
 
-const ALL_GENRES=[...new Set(books.map(b=>b.genre))].sort();
-let currentGenre='Все';
-let currentQuery='';
+// ===== STATE =====
+let read={}, bookmarks={}, diary={}, ratings={}, currentGenre='Все', currentQuery='', currentTab='books';
+let currentDiaryId=null, currentRating=0;
+
+function saveState(){
+  try{
+    localStorage.setItem("read4a",JSON.stringify(read));
+    localStorage.setItem("bm4a",JSON.stringify(bookmarks));
+    localStorage.setItem("diary4a",JSON.stringify(diary));
+    localStorage.setItem("ratings4a",JSON.stringify(ratings));
+  }catch(e){}
+}
+function loadState(){
+  try{
+    const r=localStorage.getItem("read4a");if(r)read=JSON.parse(r);
+    const b=localStorage.getItem("bm4a");if(b)bookmarks=JSON.parse(b);
+    const d=localStorage.getItem("diary4a");if(d)diary=JSON.parse(d);
+    const rt=localStorage.getItem("ratings4a");if(rt)ratings=JSON.parse(rt);
+  }catch(e){}
+}
+
+// ===== STATS =====
+function updateStats(){
+  const rc=Object.values(read).filter(Boolean).length;
+  const bc=Object.values(bookmarks).filter(Boolean).length;
+  document.getElementById('readCount').textContent=rc;
+  document.getElementById('bmCount').textContent=bc;
+  document.getElementById('totalCount').textContent=books.length;
+  document.getElementById('progressToggle').textContent='📚 '+rc+'/'+books.length;
+}
+
+// ===== TABS =====
+function showTab(name){
+  currentTab=name;
+  ['books','months','bookmarks','diary','progress'].forEach(t=>{
+    document.getElementById('tab-'+t).classList.toggle('active',t===name);
+  });
+  document.getElementById('filters').style.display=name==='books'?'flex':'none';
+  document.getElementById('randomWrap').style.display=name==='books'?'flex':'none';
+  document.getElementById('grid').style.display=name==='books'||name==='bookmarks'?'grid':'none';
+  document.getElementById('monthPlan').style.display=name==='months'?'block':'none';
+  document.getElementById('diarySection').style.display=name==='diary'?'flex':'none';
+  document.getElementById('bmNote').style.display=name==='bookmarks'?'block':'none';
+  document.getElementById('progSection').style.display=name==='progress'?'block':'none';
+  if(name==='books') render();
+  if(name==='months') renderMonths();
+  if(name==='bookmarks') renderBookmarks();
+  if(name==='diary') renderDiary();
+  if(name==='progress') renderProgress();
+}
+
+// ===== RENDER BOOKS =====
+const genreArr=[...new Set(books.map(b=>b.genre))].sort();
 
 function render(){
   const q=currentQuery.toLowerCase().trim();
@@ -192,27 +418,243 @@ function render(){
     return(!q||hay.includes(q))&&(currentGenre==='Все'||b.genre===currentGenre);
   });
   const grid=document.getElementById('grid');
-  document.getElementById('stats').innerHTML=`Найдено: <strong>${filtered.length}</strong> из ${books.length} произведений`;
-  if(!filtered.length){
-    grid.innerHTML='<div class="no-results"><strong>🔍</strong>Ничего не нашлось — попробуй другой запрос</div>';
+  if(!filtered.length){grid.innerHTML='<div class="no-results"><strong>🔍</strong><br>Ничего не нашлось</div>';return;}
+  grid.innerHTML=filtered.map(b=>cardHTML(b)).join('');
+  updateStars();
+}
+
+function cardHTML(b){
+  const isDone=!!read[b.id];
+  const isBm=!!bookmarks[b.id];
+  const r=ratings[b.id]||0;
+  const dnote=diary[b.id];
+  const stars=[1,2,3,4,5].map(i=>`<span class="star${r>=i?' on':''}" onclick="setRating(${b.id},${i})">★</span>`).join('');
+  const readBtn=`<a class="btn primary" href="${b.read}" target="_blank" rel="noopener noreferrer">📖 Читать</a>`;
+  const videoBtn=b.video?`<a class="btn video" href="${b.video}" target="_blank" rel="noopener noreferrer">▶ Мультфильм</a>`:'';
+  const diaryBtn=`<button class="btn diary" onclick="openDiary(${b.id})">📓 Дневник</button>`;
+  const tags=[b.genre,...b.tags].map((tag,i)=>`<span class="tag${i===0?' genre':''}">${tag}</span>`).join('');
+  const noteHTML=dnote&&dnote.note?`<div class="card-note">💬 ${dnote.note}</div>`:'';
+  return`<article class="card${isDone?' done':''}${isBm?' bookmarked':''}">
+    <div class="card-top">
+      <div class="card-author">${b.author}</div>
+      <div class="card-actions-top">
+        <button class="icon-btn${isDone?' active':''}" title="${isDone?'Убрать отметку':'Отметить прочитанной'}" onclick="toggleRead(${b.id})">
+          ${isDone?'✅':'⬜'}
+        </button>
+        <button class="icon-btn bm-icon${isBm?' active':''}" title="${isBm?'Убрать закладку':'Добавить в закладки'}" onclick="toggleBm(${b.id})">🔖</button>
+      </div>
+    </div>
+    <h2 class="card-title">${b.title}</h2>
+    <p class="card-desc">${b.desc}</p>
+    <div class="card-tags">${tags}</div>
+    <div class="stars" id="stars-${b.id}">${stars}</div>
+    ${noteHTML}
+    <div class="card-btns">${readBtn}${videoBtn}${diaryBtn}</div>
+    <div class="card-month">📅 ${b.month}</div>
+  </article>`;
+}
+
+function updateStars(){}
+
+function toggleRead(id){
+  read[id]=!read[id];
+  saveState();
+  updateStats();
+  if(currentTab==='books') render();
+  if(currentTab==='bookmarks') renderBookmarks();
+}
+function toggleBm(id){
+  bookmarks[id]=!bookmarks[id];
+  saveState();
+  updateStats();
+  if(currentTab==='bookmarks') renderBookmarks();
+  else if(currentTab==='books') render();
+}
+function setRating(id,val){
+  ratings[id]=val;
+  saveState();
+  if(currentTab==='books') render();
+  if(currentTab==='bookmarks') renderBookmarks();
+}
+
+// ===== BOOKMARKS =====
+function renderBookmarks(){
+  const bms=books.filter(b=>bookmarks[b.id]);
+  document.getElementById('bmNote').innerHTML=bms.length?`<p>Книг в закладках: <strong>${bms.length}</strong></p>`:'';
+  const grid=document.getElementById('grid');
+  if(!bms.length){grid.innerHTML='<div class="no-results">🔖<br>Нет закладок — нажми 🔖 на карточке книги</div>';return;}
+  grid.innerHTML=bms.map(b=>cardHTML(b)).join('');
+}
+
+// ===== MONTHS =====
+const monthOrder=['июнь','июль','август'];
+function renderMonths(){
+  const mp=document.getElementById('monthPlan');
+  const byMonth={};
+  monthOrder.forEach(m=>{byMonth[m]=books.filter(b=>b.month===m);});
+  mp.innerHTML=`<div class="month-grid">${monthOrder.map(m=>{
+    const list=byMonth[m];
+    const done=list.filter(b=>read[b.id]).length;
+    return`<div class="month-card">
+      <h3>📅 ${m.charAt(0).toUpperCase()+m.slice(1)} <span style="color:var(--green);font-size:12px;">${done}/${list.length}</span></h3>
+      <ul>${list.map(b=>`<li style="${read[b.id]?'text-decoration:line-through;color:var(--green);':''}">${b.title} <span>${b.author.split(' ').pop()}</span></li>`).join('')}</ul>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+// ===== DIARY =====
+function openDiary(id){
+  const b=books.find(x=>x.id===id);
+  if(!b) return;
+  currentDiaryId=id;
+  currentRating=ratings[id]||0;
+  document.getElementById('modalTitle').textContent=b.title;
+  document.getElementById('modalAuthor').textContent=b.author;
+  const d=diary[id]||{};
+  document.getElementById('dHeroes').value=d.heroes||'';
+  document.getElementById('dIdea').value=d.idea||'';
+  document.getElementById('dFav').value=d.fav||'';
+  document.getElementById('dNote').value=d.note||'';
+  updateModalStars();
+  document.getElementById('diaryModal').classList.add('open');
+}
+function closeModal(){document.getElementById('diaryModal').classList.remove('open');}
+function updateModalStars(){
+  document.querySelectorAll('#modalStars .star').forEach(s=>{
+    s.classList.toggle('on',parseInt(s.dataset.v)<=currentRating);
+  });
+}
+document.querySelectorAll('#modalStars .star').forEach(s=>{
+  s.addEventListener('click',()=>{currentRating=parseInt(s.dataset.v);updateModalStars();});
+});
+function saveDiary(){
+  if(!currentDiaryId) return;
+  diary[currentDiaryId]={
+    heroes:document.getElementById('dHeroes').value,
+    idea:document.getElementById('dIdea').value,
+    fav:document.getElementById('dFav').value,
+    note:document.getElementById('dNote').value,
+  };
+  ratings[currentDiaryId]=currentRating;
+  saveState();
+  closeModal();
+  if(currentTab==='books') render();
+  if(currentTab==='diary') renderDiary();
+  if(currentTab==='bookmarks') renderBookmarks();
+}
+
+function renderDiary(){
+  const sec=document.getElementById('diarySection');
+  const filled=books.filter(b=>diary[b.id]&&(diary[b.id].note||diary[b.id].idea||diary[b.id].heroes||diary[b.id].fav));
+  if(!filled.length){
+    sec.innerHTML=`<div class="empty-diary"><span class="big">📓</span>Дневник пустой — открой карточку книги и нажми «📓 Дневник»</div>`;
     return;
   }
-  grid.innerHTML=filtered.map(b=>{
-    const readBtn=`<a class="btn primary" href="${b.read}" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Читать бесплатно</a>`;
-    const videoBtn=b.video?`<a class="btn video" href="${b.video}" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>Мультфильм</a>`:'';
-    const tags=[b.genre,...b.tags].map((tag,i)=>`<span class="tag${i===0?' genre':''}">${tag}</span>`).join('');
-    return`<article class="card">
-      <div class="card-author">${b.author}</div>
-      <h2 class="card-title">${b.title}</h2>
-      <p class="card-desc">${b.desc}</p>
-      <div class="card-tags">${tags}</div>
-      <div class="card-actions">${readBtn}${videoBtn}</div>
-    </article>`;
+  sec.innerHTML=filled.map(b=>{
+    const d=diary[b.id];
+    const r=ratings[b.id]||0;
+    const stars=[1,2,3,4,5].map(i=>r>=i?'★':'☆').join('');
+    return`<div class="diary-entry">
+      <div>
+        <div class="de-author">${b.author}</div>
+        <h3>${b.title}</h3>
+        ${d.heroes?`<div class="de-row"><strong>Герои:</strong> ${d.heroes}</div>`:''}
+        ${d.idea?`<div class="de-row"><strong>Главная мысль:</strong> ${d.idea}</div>`:''}
+        ${d.fav?`<div class="de-row"><strong>Любимый момент:</strong> ${d.fav}</div>`:''}
+        ${d.note?`<div class="de-row"><strong>Впечатления:</strong> ${d.note}</div>`:''}
+        ${r?`<div class="de-stars" style="color:var(--gold)">${stars}</div>`:''}
+      </div>
+      <div class="de-print">
+        <button class="btn" onclick="printEntry(${b.id})" title="Распечатать">🖨️</button>
+      </div>
+    </div>`;
   }).join('');
 }
 
+function printEntry(id){
+  const b=books.find(x=>x.id===id);
+  const d=diary[id]||{};
+  const r=ratings[id]||0;
+  const stars=[1,2,3,4,5].map(i=>r>=i?'★':'☆').join('');
+  const w=window.open('','_blank');
+  w.document.write(`<html><head><title>Читательский дневник — ${b.title}</title>
+  <style>body{font-family:Georgia,serif;max-width:700px;margin:40px auto;color:#222;line-height:1.7;}
+  h1{font-size:24px;margin-bottom:4px;}
+  .author{color:#888;font-size:14px;margin-bottom:20px;}
+  .section{margin-bottom:16px;border-bottom:1px solid #eee;padding-bottom:12px;}
+  .label{font-weight:bold;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#b85c2c;margin-bottom:4px;}
+  .stars{font-size:22px;color:#c49a00;}
+  .school{margin-top:30px;padding-top:20px;border-top:1px solid #ccc;font-size:13px;color:#888;}
+  </style></head><body>
+  <h1>${b.title}</h1>
+  <div class="author">${b.author} · Жанр: ${b.genre}</div>
+  ${d.heroes?`<div class="section"><div class="label">Главные герои</div><p>${d.heroes}</p></div>`:''}
+  ${d.idea?`<div class="section"><div class="label">Главная мысль</div><p>${d.idea}</p></div>`:''}
+  ${d.fav?`<div class="section"><div class="label">Любимый момент</div><p>${d.fav}</p></div>`:''}
+  ${d.note?`<div class="section"><div class="label">Мои впечатления</div><p>${d.note}</p></div>`:''}
+  ${r?`<div class="section"><div class="label">Оценка</div><div class="stars">${stars}</div></div>`:''}
+  <div class="school">4А класс · Летнее чтение</div>
+  </body></html>`);
+  w.document.close();
+  w.print();
+}
+
+// ===== PROGRESS =====
+function renderProgress(){
+  const total=books.length;
+  const done=Object.values(read).filter(Boolean).length;
+  const pct=Math.round(done/total*100);
+  const byMonth={};
+  monthOrder.forEach(m=>{
+    const list=books.filter(b=>b.month===m);
+    byMonth[m]={total:list.length,done:list.filter(b=>read[b.id]).length};
+  });
+  document.getElementById('progSection').innerHTML=`
+    <div class="prog-info">Прочитано <strong>${done}</strong> из ${total} книг — <strong>${pct}%</strong></div>
+    <div class="prog-bar-wrap"><div class="prog-bar" style="width:${pct}%"></div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;">
+      ${monthOrder.map(m=>{
+        const s=byMonth[m];
+        const p=Math.round(s.done/s.total*100);
+        return`<div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center;">
+          <div style="font-size:13px;font-weight:800;color:var(--accent);margin-bottom:6px;">${m.charAt(0).toUpperCase()+m.slice(1)}</div>
+          <div style="font-size:28px;font-weight:800;color:var(--green);">${s.done}/${s.total}</div>
+          <div style="font-size:12px;color:var(--muted);">книг прочитано</div>
+          <div style="background:var(--surface3);border-radius:999px;height:8px;margin-top:8px;overflow:hidden;">
+            <div style="background:var(--green);height:100%;width:${p}%;border-radius:999px;transition:width .5s;"></div>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+    <div style="margin-top:16px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;">
+      <div style="font-weight:800;margin-bottom:10px;">Прочитанные книги</div>
+      ${books.filter(b=>read[b.id]).length?
+        books.filter(b=>read[b.id]).map(b=>`<div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--border);font-size:13px;">
+          <span style="color:var(--green);">✅</span>
+          <span style="color:var(--muted);font-size:11px;min-width:60px;">${b.month}</span>
+          <span>${b.title}</span>
+          <span style="color:var(--faint);font-size:11px;margin-left:auto;">${b.author.split(' ').pop()}</span>
+        </div>`).join('')
+        :'<div style="color:var(--muted);font-size:14px;padding:8px 0;">Пока ни одной книги не отмечено — нажми ⬜ на карточке!</div>'}
+    </div>`;
+}
+
+// ===== RANDOM =====
+function pickRandom(){
+  const unread=books.filter(b=>!read[b.id]);
+  const pool=unread.length?unread:books;
+  const b=pool[Math.floor(Math.random()*pool.length)];
+  document.getElementById('rAuthor').textContent=b.author;
+  document.getElementById('rTitle').textContent=b.title;
+  document.getElementById('rDesc').textContent=b.desc;
+  document.getElementById('rReadBtn').href=b.read;
+  document.getElementById('randomModal').classList.add('open');
+}
+function closeRandom(){document.getElementById('randomModal').classList.remove('open');}
+
+// ===== FILTERS =====
 const filtersEl=document.getElementById('filters');
-['Все',...ALL_GENRES].forEach(g=>{
+['Все',...genreArr].forEach(g=>{
   const btn=document.createElement('button');
   btn.className='filter-btn'+(g==='Все'?' active':'');
   btn.textContent=g;
@@ -225,10 +667,18 @@ const filtersEl=document.getElementById('filters');
   filtersEl.appendChild(btn);
 });
 
-const searchInput=document.getElementById('search');
-searchInput.addEventListener('input',e=>{currentQuery=e.target.value;render();});
-searchInput.addEventListener('keydown',e=>{if(e.key==='Enter'){currentQuery=e.target.value;render();}});
-document.getElementById('searchBtn').addEventListener('click',()=>{currentQuery=searchInput.value;render();});
+// ===== SEARCH =====
+const si=document.getElementById('search');
+si.addEventListener('input',e=>{currentQuery=e.target.value;if(currentTab==='books')render();});
+document.getElementById('searchBtn').addEventListener('click',()=>{currentQuery=si.value;render();});
+
+// ===== CLOSE MODALS ON OVERLAY CLICK =====
+document.getElementById('diaryModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+document.getElementById('randomModal').addEventListener('click',function(e){if(e.target===this)closeRandom();});
+
+// ===== INIT =====
+loadState();
+updateStats();
 render();
 </script>
 </body>
