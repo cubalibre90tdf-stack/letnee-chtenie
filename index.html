@@ -168,6 +168,14 @@ footer{text-align:center;padding:24px;color:var(--faint);font-size:12px;border-t
   .search-wrap{flex-direction:column;}
   .hero{padding:20px 14px 18px;}
 }
+
+.notice-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:700;display:none;align-items:center;justify-content:center;padding:16px;}
+.notice-backdrop.open{display:flex;}
+.notice-box{background:var(--surface2);border:1px solid var(--border);border-radius:22px;padding:24px;max-width:560px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.25);}
+.notice-box h2{font-family:'Lora',serif;font-size:24px;margin-bottom:10px;color:var(--accent);}
+.notice-box p{font-size:14px;line-height:1.65;color:var(--text);margin-bottom:10px;max-width:none;}
+.notice-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px;}
+
 </style>
 </head>
 <body>
@@ -294,6 +302,19 @@ footer{text-align:center;padding:24px;color:var(--faint);font-size:12px;border-t
   </div>
 </div>
 
+
+<div class="notice-backdrop" id="noticeModal" aria-hidden="true">
+  <div class="notice-box" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
+    <h2 id="noticeTitle">Важно</h2>
+    <p>Книги открываются на сайтах разных библиотек (Ну-ка Дети, Дети-Онлайн, ЛитРес и др.).</p>
+    <p>Иногда эти сайты могут быть недоступны или открываться не с первого раза.</p>
+    <p>Если страница не загрузилась — попробуйте ещё раз, чуть позже или с другого устройства.</p>
+    <div class="notice-actions">
+      <button class="btn primary" onclick="closeNotice()">Понятно</button>
+    </div>
+  </div>
+</div>
+
 <footer>Сайт для 4А класса · Все книги доступны бесплатно, без регистрации, без VPN</footer>
 
 <script>
@@ -323,7 +344,7 @@ const books = [
   {id:12,author:'П. П. Бажов',title:'Каменный цветок',genre:'Сказ',month:'июль',desc:'Мастер Данила ищет красоту, которая живёт в камне — и платит за это высокую цену.',read:'https://nukadeti.ru/skazki/bazhov-kamennyj-cvetok',video:null,tags:['Урал','сказ']},
   {id:13,author:'Е. Л. Шварц',title:'Сказка о потерянном времени',genre:'Сказка',month:'июль',desc:'Ленивые школьники вдруг стали стариками — как вернуть потраченные впустую годы?',read:'https://nukadeti.ru/skazki/skazka-o-poteryannom-vremeni',video:null,tags:['поучительная']},
   {id:14,author:'Н. Н. Носов',title:'Приключения Незнайки и его друзей',genre:'Повесть',month:'июль',desc:'Незнайка хвастается, путает, изобретает и попадает в переделки — самая весёлая повесть о коротышках.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-neznajki-i-ego-druzej',video:null,tags:['юмор','детям']},
-  {id:15,author:'В. Ю. Драгунский',title:'Главные реки',genre:'Рассказ',month:'июль',desc:'Дениска не выучил урок и придумывает самые невероятные отговорки — смешно и узнаваемо.',read:'https://kartaslov.ru/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8/%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80_%D0%94%D1%80%D0%B0%D0%B3%D1%83%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%A5%D0%B8%D1%82%D1%80%D1%8B%D0%B9_%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1_%28%D1%81%D0%B1%D0%BE%D1%80%D0%BD%D0%B8%D0%BA%29/11',video:null,tags:['юмор','детям']},
+  {id:15,author:'В. Ю. Драгунский',title:'Главные реки',genre:'Рассказ',month:'июль',desc:'Дениска не выучил урок и придумывает самые невероятные отговорки — смешно и узнаваемо.',read:'https://deti-online.com/knigi/glavnye-reki-ameriki/',video:null,tags:['юмор','детям']},
   {id:16,author:'В. Ю. Драгунский',title:'Что любит Мишка',genre:'Рассказ',month:'июль',desc:'Каждый любит что-то своё — Дениска и Мишка спорят о самом главном в жизни.',read:'https://mishka-knizhka.ru/rasskazy-dlya-detej/rasskazy-dragunskogo/chto-ljubit-mishka-dragunskij-v/',video:null,tags:['юмор','детям']},
   {id:17,author:'Б. С. Житков',title:'Как я ловил человечков',genre:'Рассказ',month:'июль',desc:'Мальчик убеждён, что внутри игрушечного пароходика живут крошечные человечки — и решает их поймать.',read:'https://www.litres.ru/book/boris-zhitkov/kak-ya-lovil-chelovechkov-4235345/chitat-onlayn/',video:null,tags:['детям']},
   {id:18,author:'К. Г. Паустовский',title:'Корзина с еловыми шишками',genre:'Рассказ',month:'июль',desc:'Знаменитый композитор встречает в лесу маленькую девочку и обещает ей подарок — через долгие годы.',read:'https://azbyka.ru/fiction/korzina-s-elovymi-shishkami-paustovskij/',video:null,tags:['о природе']},
@@ -331,12 +352,12 @@ const books = [
   {id:20,author:'М. М. Зощенко',title:'Ёлка',genre:'Рассказ',month:'август',desc:'Маленький Минька берёт с ёлки самую красивую игрушку — весёлый рассказ о детской жадности.',read:'https://skazkus.ru/tema/mihail-zoschenko/',video:null,tags:['юмор','детям']},
   {id:21,author:'В. В. Бианки',title:'Оранжевое горлышко',genre:'Рассказ',month:'июль',desc:'История смелой куропатки, которая защищает своих птенцов от опасностей лесной жизни.',read:'https://nukadeti.ru/skazki/bianki-oranzhevoe-gorlyshko',video:null,tags:['о природе','о животных']},
   {id:22,author:'Д. Н. Мамин-Сибиряк',title:'Приёмыш',genre:'Рассказ',month:'июль',desc:'Старый охотник нашёл в тайге лебедя и выходил его — но дикая птица тоскует по свободе.',read:'https://nukadeti.ru/skazki/mamin-sibiryak-priemysh',video:null,tags:['о животных']},
-  {id:23,author:'Д. Н. Мамин-Сибиряк',title:'Серая шейка',genre:'Сказка',month:'июль',desc:'Маленькая уточка с перебитым крылом остаётся зимовать одна — грустная и добрая история.',read:'https://nukadeti.ru/skazki/mamin_sibiryak_seraya_shejka',video:null,tags:['о животных']},
+  {id:23,author:'Д. Н. Мамин-Сибиряк',title:'Серая шейка',genre:'Сказка',month:'июль',desc:'Маленькая уточка с перебитым крылом остаётся зимовать одна — грустная и добрая история.',read:'https://deti-online.com/skazki/seraya-sheyka/',video:null,tags:['о животных']},
   {id:24,author:'А. И. Куприн',title:'Барбос и Жулька',genre:'Рассказ',month:'август',desc:'Два пса — большой и маленький — история настоящей собачьей дружбы и самопожертвования.',read:'https://www.litres.ru/book/aleksandr-kuprin/barbos-i-zhulka-158593/chitat-onlayn/',video:null,tags:['о животных']},
   {id:25,author:'А. И. Куприн',title:'Чудесный доктор',genre:'Рассказ',month:'август',desc:'Нищая семья в отчаянии накануне Рождества — и незнакомый врач, который меняет всё.',read:'https://nukadeti.ru/rasskazy/chudesnyj-doktor',video:null,tags:['классика']},
   {id:26,author:'М. М. Пришвин',title:'Выскочка',genre:'Рассказ',month:'август',desc:'Сорока Выскочка торопится схватить косточку, но расплачивается за хвастовство хвостом.',read:'https://nukadeti.ru/skazki/prishvin-vyskochka',video:null,tags:['о животных','юмор']},
   {id:27,author:'В. П. Астафьев',title:'Стрижонок Скрип',genre:'Рассказ',month:'август',desc:'Маленький стриж учится летать, теряет маму и впервые сталкивается с большим миром.',read:'https://nukadeti.ru/rasskazy/viktor-astafev',video:null,tags:['о природе','о животных']},
-  {id:28,author:'А. П. Платонов',title:'Корова',genre:'Рассказ',month:'август',desc:'Мальчик Вася дружит с коровой на железнодорожном разъезде — простая история о любви и потере.',read:'https://nukadeti.ru/rasskazy/korova-platonov',video:null,tags:['классика']},
+  {id:28,author:'А. П. Платонов',title:'Корова',genre:'Рассказ',month:'август',desc:'Мальчик Вася дружит с коровой на железнодорожном разъезде — простая история о любви и потере.',read:'https://ilibrary.ru/text/1191/index.html',video:null,tags:['классика']},
   {id:29,author:'Ю. И. Коваль',title:'Приключения Васи Куролесова',genre:'Повесть',month:'август',desc:'Деревенский паренёк Вася нечаянно покупает на рынке украденного поросёнка — смешной детектив.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-vasi-kurolesova',video:null,tags:['юмор','приключения']},
   {id:30,author:'В. Голявкин',title:'Тетрадки под дождём',genre:'Рассказ',month:'август',desc:'Два мальчика хотели сбежать с урока и спустили портфели из окна — курьёзная история.',read:'https://deti-online.com/knigi/tetradki-pod-dozhdem/',video:null,tags:['юмор','детям']},
   {id:31,author:'В. Голявкин',title:'Как я под партой сидел',genre:'Рассказ',month:'август',desc:'Один из самых смешных рассказов Голявкина — маленькая зарисовка из школьной жизни.',read:'https://nukadeti.ru/rasskazy/kak-ya-pod-partoj-sidel',video:null,tags:['юмор','детям']},
@@ -346,15 +367,15 @@ const books = [
   {id:35,author:'К. Булычёв',title:'Путешествие Алисы',genre:'Повесть',month:'август',desc:'Алиса Селезнёва и её папа летят на другие планеты в поисках редких животных для зоопарка.',read:'https://nukadeti.ru/rasskazy/tajna-tretej-planety',video:null,tags:['фантастика','приключения']},
   {id:36,author:'Н. А. Кун',title:'Мифы Древней Греции',genre:'Мифы',month:'июль',desc:'Сизиф, Тантал и Прометей — истории о людях, которые осмелились бросить вызов богам.',read:'https://nukadeti.ru/skazki/mify-drevnej-grecii',video:null,tags:['мифы','история']},
   {id:37,author:'А. Н. Толстой',title:'Золотой ключик, или Приключения Буратино',genre:'Сказочная повесть',month:'июнь',desc:'Деревянный мальчик Буратино ищет золотой ключик — весёлая русская версия Пиноккио.',read:'https://nukadeti.ru/skazki/tolstoj_zolotoj_klyuchik_ili_priklyucheniya_buratino',video:null,tags:['сказка','детям']},
-  {id:38,author:'Г. Х. Андерсен',title:'Русалочка',genre:'Сказка',month:'июнь',desc:'Русалочка отдаёт голос ради любви к принцу — печальная и красивая сказка о жертве и мечте.',read:'https://nukadeti.ru/skazki/andersen_rusalochka',video:null,tags:['сказка','зарубежная']},
+  {id:38,author:'Г. Х. Андерсен',title:'Русалочка',genre:'Сказка',month:'июнь',desc:'Русалочка отдаёт голос ради любви к принцу — печальная и красивая сказка о жертве и мечте.',read:'https://classica-online.ru/catalog/rusalochka-andersen/',video:null,tags:['сказка','зарубежная']},
   {id:39,author:'Марк Твен',title:'Приключения Тома Сойера',genre:'Роман',month:'июль',desc:'Неугомонный Том Сойер красит забор, влюбляется и становится свидетелем преступления.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-toma-sojera',video:null,tags:['зарубежная','приключения']},
   {id:40,author:'Л. Ф. Баум',title:'Страна Оз',genre:'Сказка',month:'июль',desc:'Дороти попадает в волшебную страну и вместе с Пугалом, Дровосеком и Львом ищет дорогу домой.',read:'https://nukadeti.ru/skazki/chudesnaya-strana-oz',video:null,tags:['сказка','зарубежная']},
-  {id:41,author:'Дж. М. Барри',title:'Питер Пэн',genre:'Сказка',month:'август',desc:'Мальчик, который не хочет взрослеть, уносит детей в волшебную Нетландию.',read:'https://nukadeti.ru/skazki/piter_pehn',video:null,tags:['сказка','зарубежная']},
-  {id:42,author:'Астрид Линдгрен',title:'Малыш и Карлсон',genre:'Повесть',month:'июль',desc:'Толстый самодовольный человечек с крыши — лучший друг одинокого мальчика Малыша.',read:'https://flibusta.su/book/2387-tri-povesti-o-malyishe-i-karlsone/read/',video:null,tags:['сказка','зарубежная']},
+  {id:41,author:'Дж. М. Барри',title:'Питер Пэн',genre:'Сказка',month:'август',desc:'Мальчик, который не хочет взрослеть, уносит детей в волшебную Нетландию.',read:'https://books.yandex.ru/books/mxUfpXwX/read-online',video:null,tags:['сказка','зарубежная']},
+  {id:42,author:'Астрид Линдгрен',title:'Малыш и Карлсон',genre:'Повесть',month:'июль',desc:'Толстый самодовольный человечек с крыши — лучший друг одинокого мальчика Малыша.',read:'https://libcat.ru/knigi/detskaya-literatura/skazka/28656-astrid-lindgren-malysh-i-karlson.html',video:null,tags:['сказка','зарубежная']},
   {id:43,author:'Рэй Брэдбери',title:'Всё лето в один день',genre:'Рассказ',month:'август',desc:'На Венере, где солнце появляется раз в 7 лет, дети обижают девочку — короткий и пронзительный рассказ.',read:'https://nukadeti.ru/rasskazy/vse-leto-v-odin-den',video:null,tags:['фантастика','зарубежная']},
   {id:44,author:'Туве Янссон',title:'Сказки про Муми-тролля',genre:'Сказки',month:'август',desc:'Добрые, задумчивые истории из Муми-дола, где живут странные и милые существа.',read:'https://nukadeti.ru/skazki/tuve-yansson',video:null,tags:['сказка','зарубежная']},
   {id:45,author:'А. де Сент-Экзюпери',title:'Маленький принц',genre:'Сказка',month:'август',desc:'Маленький принц прилетает с далёкой звезды и учит лётчика (и нас) видеть главное.',read:'https://azbyka.ru/fiction/malenkij-princ/',video:null,tags:['сказка','зарубежная','философская']},
-  {id:46,author:'Ф. Бёрнетт',title:'Маленький лорд Фаунтлерой',genre:'Повесть',month:'август',desc:'Простой американский мальчик вдруг оказывается наследником английского лорда.',read:'https://nukadeti.ru/rasskazy/malenkij-lord-fauntleroj',video:null,tags:['зарубежная']},
+  {id:46,author:'Ф. Бёрнетт',title:'Маленький лорд Фаунтлерой',genre:'Повесть',month:'август',desc:'Простой американский мальчик вдруг оказывается наследником английского лорда.',read:'https://nukadeti.ru/rasskazy/priklyucheniya-vasi-kurolesova',video:null,tags:['зарубежная']},
 ];
 
 // ===== STATE =====
@@ -585,7 +606,15 @@ function printEntry(id){
   .label{font-weight:bold;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#b85c2c;margin-bottom:4px;}
   .stars{font-size:22px;color:#c49a00;}
   .school{margin-top:30px;padding-top:20px;border-top:1px solid #ccc;font-size:13px;color:#888;}
-  </style></head><body>
+  
+.notice-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:700;display:none;align-items:center;justify-content:center;padding:16px;}
+.notice-backdrop.open{display:flex;}
+.notice-box{background:var(--surface2);border:1px solid var(--border);border-radius:22px;padding:24px;max-width:560px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.25);}
+.notice-box h2{font-family:'Lora',serif;font-size:24px;margin-bottom:10px;color:var(--accent);}
+.notice-box p{font-size:14px;line-height:1.65;color:var(--text);margin-bottom:10px;max-width:none;}
+.notice-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px;}
+
+</style></head><body>
   <h1>${b.title}</h1>
   <div class="author">${b.author} · Жанр: ${b.genre}</div>
   ${d.heroes?`<div class="section"><div class="label">Главные герои</div><p>${d.heroes}</p></div>`:''}
@@ -676,10 +705,29 @@ document.getElementById('searchBtn').addEventListener('click',()=>{currentQuery=
 document.getElementById('diaryModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
 document.getElementById('randomModal').addEventListener('click',function(e){if(e.target===this)closeRandom();});
 
+
+function showNotice(){
+  try{
+    if(!sessionStorage.getItem('noticeSeen4a')){
+      document.getElementById('noticeModal').classList.add('open');
+      document.getElementById('noticeModal').setAttribute('aria-hidden','false');
+    }
+  }catch(e){
+    document.getElementById('noticeModal').classList.add('open');
+    document.getElementById('noticeModal').setAttribute('aria-hidden','false');
+  }
+}
+function closeNotice(){
+  document.getElementById('noticeModal').classList.remove('open');
+  document.getElementById('noticeModal').setAttribute('aria-hidden','true');
+  try{sessionStorage.setItem('noticeSeen4a','1')}catch(e){}
+}
+
 // ===== INIT =====
 loadState();
 updateStats();
 render();
+showNotice();
 </script>
 </body>
 </html>
